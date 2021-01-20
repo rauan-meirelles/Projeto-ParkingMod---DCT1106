@@ -4,7 +4,7 @@
 ///               Departamento de Computação e Tecnologia                   ///
 ///                  Disciplina DCT1106 -- Programação                      ///
 ///            Projeto Sistema de Controle de Estacionamentos               ///
-///                Developed by  @flgorgonio - Jan, 2021                    ///
+///              Developed by  @rauan-meirelles - Jan, 2021                 ///
 ///////////////////////////////////////////////////////////////////////////////
 
 #include <stdio.h>
