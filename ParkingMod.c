@@ -27,7 +27,7 @@ void menuSobre(void) {
     printf("///                  Disciplina DCT1106 -- Programação                      ///\n");
     printf("///            Projeto Sistema de Controle de Estacionamentos               ///\n");
     printf("///              = == ==       PARKINGMOD        = == ==                    ///\n");
-    printf("///                Developed by  @flgorgonio - Jan, 2021                    ///\n");
+    printf("///              Developed by  @rauan-meirelles - Jan, 2021                 ///\n");
     printf("///                                                                         ///\n");
     printf("///////////////////////////////////////////////////////////////////////////////\n");
     printf("///                                                                         ///\n");
