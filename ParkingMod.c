@@ -10,13 +10,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
 /// 
 /// Assinaturas das funções
 ///
 void menuPrincipal(void);
-void telaSobre(void);
 void menuCliente(void);
 void menuFuncionario(void);
+void menuGerente(void);
+void telaSobre(void);
+
 
 
 ///
@@ -26,10 +29,12 @@ int main(void) {
     menuPrincipal();
     menuCliente();
     menuFuncionario();
+    menuGerente();
     telaSobre();
     return 0;
 }
 
+/// Interfaces
 
 void menuPrincipal(void) {
     system("clear");
@@ -63,8 +68,6 @@ void menuPrincipal(void) {
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
 	getchar();
 }
-
-
 
 
 
@@ -106,8 +109,6 @@ void menuCliente(void) {
 
 
 
-
-
 void menuFuncionario(void) {
     system("clear");
 	printf("\n");
@@ -142,6 +143,39 @@ void menuFuncionario(void) {
 
 
 
+void menuGerente(void) {
+    system("clear");
+	printf("\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///              (o ! o) == ==  PARKINGMOD   = == == (o ! o)              ///\n");
+	printf("///                Sistema de Controle de Estacionamentos                 ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///              Developed by  @rauan-meirelles - Jan, 2021               ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///           =  (o ! o) = = = Menu Gerente  = = =  (o ! o) =             ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///                                                                       ///\n");
+	printf("///           1. Encerrar cotação diária                                  ///\n");
+	printf("///           2. Ver lucro final diário                                   ///\n");
+	printf("///           3. Tabela de preços                                         ///\n");
+	printf("///           0. Voltar ao menu anterior                                  ///\n");
+	printf("///                                                                       ///\n");
+	printf("///           Escolha a opção desejada:                                   ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+	getchar();
+}
+
+
 
 void telaSobre(void) {
     system("clear");
@@ -149,11 +183,11 @@ void telaSobre(void) {
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
 	printf("///             Universidade Federal do Rio Grande do Norte               ///\n");
- 	 printf("///                 Centro de Ensino Superior do Seridó                   ///\n");
- 	 printf("///               Departamento de Computação e Tecnologia                 ///\n");
+  	printf("///                 Centro de Ensino Superior do Seridó                   ///\n");
+  	printf("///               Departamento de Computação e Tecnologia                 ///\n");
   	printf("///                  Disciplina DCT1106 -- Programação                    ///\n");
-  	printf("///            Projeto Sistema de Controle de Estacionamentos             ///\n");
-  	printf("///              = == ==       PARKINGMOD        = == ==                  ///\n");
+	printf("///            Projeto Sistema de Controle de Estacionamentos             ///\n");
+ 	printf("///              = == ==       PARKINGMOD        = == ==                  ///\n");
 	printf("///              Developed by  @rauan-meirelles - Jan, 2021               ///\n");
 	printf("///                               (o ! o)                                 ///\n");
 	printf("///                                                                       ///\n");
