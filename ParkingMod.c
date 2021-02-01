@@ -7,8 +7,11 @@
 ///              Developed by  @rauan-meirelles - Jan, 2021                 ///
 ///////////////////////////////////////////////////////////////////////////////
 
+
 #include <stdio.h>
 #include <stdlib.h>
+
+
 
 
 /// 
@@ -16,9 +19,22 @@
 ///
 void menuPrincipal(void);
 void menuCliente(void);
+void telacadastrovei(void);
+void telarecuperarvei(void);
+void telaatualizarvaga(void);
+void telaexcluirvei(void);
 void menuFuncionario(void);
-void menuGerente(void);
+void telacadastrofun(void);
+void telarecuperarfun(void);
+void telaatualizarfun(void);
+void telaexcluirfun(void);
+void menuFinancas(void);
+void telacadastropre(void);
+void telaatualizarpre(void);
 void telaSobre(void);
+
+
+
 
 
 
@@ -28,13 +44,25 @@ void telaSobre(void);
 int main(void) {
     menuPrincipal();
     menuCliente();
+    telacadastrovei();
+    telarecuperarvei();
+    telaatualizarvaga();
+    telaexcluirvei();
     menuFuncionario();
-    menuGerente();
+    telacadastrofun();
+    telarecuperarfun();
+    telaatualizarfun();
+    telaexcluirfun();
+    menuFinancas();
+    telacadastropre();
+    telaatualizarpre();
     telaSobre();
     return 0;
 }
 
+
 /// Interfaces
+
 
 void menuPrincipal(void) {
     system("clear");
@@ -57,8 +85,9 @@ void menuPrincipal(void) {
 	printf("///                                                                       ///\n");
 	printf("///           1. Módulo Cliente                                           ///\n");
 	printf("///           2. Módulo Funcionário                                       ///\n");
-	printf("///           3. Módulo Gerente                                           ///\n");
+	printf("///           3. Módulo Finanças                                          ///\n");
 	printf("///           4. Sobre                                                    ///\n");
+  	printf("///           0. Encerrar programa                                        ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           Escolha a opção desejada:                                   ///\n");
 	printf("///                                                                       ///\n");
@@ -68,6 +97,10 @@ void menuPrincipal(void) {
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
 	getchar();
 }
+
+
+
+
 
 
 
@@ -91,10 +124,10 @@ void menuCliente(void) {
 	printf("///           = (o ! o) = = = Menu Cliente  = = =  (o ! o)  =             ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
-	printf("///           1. Alocar uma Vaga                                          ///\n");
-	printf("///           2. Tipos de Vaga                                            ///\n");
-	printf("///           3. Tabela de Preços e Vagas disponiveis                     ///\n");
-	printf("///           3. Desalocar Vaga                                           ///\n");
+	printf("///           1. Cadastrar Veículo                                        ///\n");
+	printf("///           2. Recuperar Veículo                                        ///\n");
+	printf("///           3. Atualizar Vaga                                           ///\n");
+	printf("///           4. Excluir Veículo de uma Vaga                              ///\n");
 	printf("///           0. Voltar ao menu anterior                                  ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           Escolha a opção desejada:                                   ///\n");
@@ -105,6 +138,147 @@ void menuCliente(void) {
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
 	getchar();
 }
+
+
+
+
+
+void telacadastrovei(void) {
+    system("clear");
+	printf("\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///              (o ! o) == ==  PARKINGMOD   = == == (o ! o)              ///\n");
+	printf("///                Sistema de Controle de Estacionamentos                 ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///              Developed by  @rauan-meirelles - Jan, 2021               ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///           = (o ! o)  =  Cadastro de Veículo =  (o ! o)  =             ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///                                                                       ///\n");
+	printf("///           1. Informe seu nome:                                        ///\n");
+	printf("///           2. CPF:                                                     ///\n");
+	printf("///           3. Placa do Veículo:                                        ///\n");
+	printf("///           0. Voltar ao menu anterior                                  ///\n");
+	printf("///                                                                       ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+	getchar();
+}
+
+
+
+
+
+void telarecuperarvei(void) {
+    system("clear");
+	printf("\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///              (o ! o) == ==  PARKINGMOD   = == == (o ! o)              ///\n");
+	printf("///                Sistema de Controle de Estacionamentos                 ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///              Developed by  @rauan-meirelles - Jan, 2021               ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///           = (o ! o)   =  Recuperar Veículo  =  (o ! o)  =             ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///                                                                       ///\n");
+	printf("///           1. Informe seu CPF:                                         ///\n");	
+	printf("///           2. Informe a placa do Veículo:                              ///\n");
+	printf("///           0. Voltar ao menu anterior                                  ///\n");
+	printf("///                                                                       ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+	getchar();
+}
+
+
+
+
+
+void telaatualizarvaga(void) {
+    system("clear");
+	printf("\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///              (o ! o) == ==  PARKINGMOD   = == == (o ! o)              ///\n");
+	printf("///                Sistema de Controle de Estacionamentos                 ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///              Developed by  @rauan-meirelles - Jan, 2021               ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///           = (o ! o)   =   Atualizar Vaga    =  (o ! o)  =             ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///                                                                       ///\n");
+	printf("///    1. Informe o CPF que deseja substituir:                            ///\n");	
+	printf("///    2. Informe a placa do Veículo que deseja substituir:               ///\n");
+  	printf("///    3. Informe o novo CPF:                                             ///\n");
+  	printf("///    4. Informe a nova placa:                                          ///\n");
+	printf("///    0. Voltar ao menu anterior                                         ///\n");
+	printf("///                                                                       ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+	getchar();
+}
+
+
+
+
+
+
+void telaexcluirvei(void) {
+    system("clear");
+	printf("\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///              (o ! o) == ==  PARKINGMOD   = == == (o ! o)              ///\n");
+	printf("///                Sistema de Controle de Estacionamentos                 ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///              Developed by  @rauan-meirelles - Jan, 2021               ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///           = (o ! o)   =   Excluir Veículo  =   (o ! o)  =             ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///                                                                       ///\n");
+	printf("///        1. Informe seu CPF:                                            ///\n");	
+	printf("///        2. Informe a placa do Veículo que deseja excluir:              ///\n");
+	printf("///        0. Voltar ao menu anterior                                     ///\n");
+	printf("///                                                                       ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+	getchar();
+}
+
 
 
 
@@ -128,9 +302,10 @@ void menuFuncionario(void) {
 	printf("///           (o ! o) = = = Menu Funcionário  = = =  (o ! o)              ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
-	printf("///           1. Vagas Disponíveis/Ocupadas                               ///\n");
-	printf("///           2. Tabela de Preços                                         ///\n");
-	printf("///           3. Alterar preço das vagas                                  ///\n");
+	printf("///           1. Cadastrar Funcionário                                    ///\n");
+	printf("///           2. Recuperar Funcionário                                    ///\n");
+	printf("///           3. Atualizar Funcionário                                    ///\n");
+  	printf("///           4. Excluir Funcionário                                      ///\n");
 	printf("///           0. Voltar ao menu anterior                                  ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           Escolha a opção desejada:                                   ///\n");
@@ -143,7 +318,8 @@ void menuFuncionario(void) {
 
 
 
-void menuGerente(void) {
+
+void telacadastrofun(void) {
     system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -159,12 +335,154 @@ void menuGerente(void) {
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
-	printf("///           =  (o ! o) = = = Menu Gerente  = = =  (o ! o) =             ///\n");
+	printf("///           = (o ! o) = Cadastro de Funcionário = (o ! o) =             ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
-	printf("///           1. Encerrar cotação diária                                  ///\n");
-	printf("///           2. Ver lucro final diário                                   ///\n");
-	printf("///           3. Tabela de preços                                         ///\n");
+	printf("///           1. Informe seu nome:                                        ///\n");
+	printf("///           2. CPF:                                                     ///\n");
+	printf("///           3. Sua função:                                              ///\n");
+	printf("///           0. Voltar ao menu anterior                                  ///\n");
+	printf("///                                                                       ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+	getchar();
+}
+
+
+
+
+
+void telarecuperarfun(void) {
+    system("clear");
+	printf("\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///              (o ! o) == ==  PARKINGMOD   = == == (o ! o)              ///\n");
+	printf("///                Sistema de Controle de Estacionamentos                 ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///              Developed by  @rauan-meirelles - Jan, 2021               ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///           = (o ! o)   =  Recuperar Função   =  (o ! o)  =             ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///                                                                       ///\n");
+	printf("///           1. Informe seu CPF:                                         ///\n");	
+	printf("///           2. Informe seu nome:                                        ///\n");
+	printf("///           0. Voltar ao menu anterior                                  ///\n");
+	printf("///                                                                       ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+	getchar();
+}
+
+
+
+
+void telaatualizarfun(void) {
+    system("clear");
+	printf("\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///              (o ! o) == ==  PARKINGMOD   = == == (o ! o)              ///\n");
+	printf("///                Sistema de Controle de Estacionamentos                 ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///              Developed by  @rauan-meirelles - Jan, 2021               ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///           = (o ! o) =  Atualizar Funcionário  = (o ! o) =             ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///                                                                       ///\n");
+  	printf("///     1. Informe o nome que deseja substituir:                          ///\n");
+	printf("///     2. Informe o CPF que deseja substituir:                           ///\n");	
+	printf("///     3. Informe a Função que deseja substituir:                        ///\n");
+  	printf("///     4. Informe o novo nome:                                           ///\n");
+  	printf("///     5. Informe o novo CPF:                                            ///\n");
+  	printf("///     6. Informe a nova função:                                         ///\n");
+	printf("///     0. Voltar ao menu anterior                                        ///\n");
+	printf("///                                                                       ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+	getchar();
+}
+
+
+
+
+
+void telaexcluirfun(void) {
+    system("clear");
+	printf("\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///              (o ! o) == ==  PARKINGMOD   = == == (o ! o)              ///\n");
+	printf("///                Sistema de Controle de Estacionamentos                 ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///              Developed by  @rauan-meirelles - Jan, 2021               ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///           = (o ! o)  = Excluir Funcionário =  (o ! o)   =             ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///                                                                       ///\n");
+	printf("///        1. Informe o nome para ser excluido:                            ///\n");	
+	printf("///        2. Informe o CPF:                                              ///\n");
+  	printf("///        3. Informe a função:                                           ///\n");
+	printf("///        0. Voltar ao menu anterior                                     ///\n");
+	printf("///                                                                       ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("\n");
+    	printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+	getchar();
+}
+
+
+
+
+
+void menuFinancas(void) {
+    system("clear");
+	printf("\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///              (o ! o) == ==  PARKINGMOD   = == == (o ! o)              ///\n");
+	printf("///                Sistema de Controle de Estacionamentos                 ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///              Developed by  @rauan-meirelles - Jan, 2021               ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///           =  (o ! o) = = = Menu Finanças  = = =  (o ! o) =            ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///                                                                       ///\n");
+	printf("///           1. Cadastrar preços das vagas                               ///\n");
+	printf("///           2. Rever preço das Vagas                                    ///\n");
+	printf("///           3. Atualizar preço das Vagas                                ///\n");
+  	printf("///           4. Lucro diário                                             ///\n");
 	printf("///           0. Voltar ao menu anterior                                  ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           Escolha a opção desejada:                                   ///\n");
@@ -177,15 +495,83 @@ void menuGerente(void) {
 
 
 
+
+
+
+void telacadastropre(void) {
+    system("clear");
+	printf("\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///              (o ! o) == ==  PARKINGMOD   = == == (o ! o)              ///\n");
+	printf("///                Sistema de Controle de Estacionamentos                 ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///              Developed by  @rauan-meirelles - Jan, 2021               ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///           = (o ! o)   =  Cadastro de Preço   =  (o ! o) =             ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///                                                                       ///\n");
+	printf("///     1. Informe o preço fixo das vagas por dia, em reais:              ///\n");
+	printf("///     0. Voltar ao menu anterior                                        ///\n");
+	printf("///                                                                       ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+	getchar();
+}
+
+
+
+
+void telaatualizarpre(void) {
+    system("clear");
+	printf("\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///              (o ! o) == ==  PARKINGMOD   = == == (o ! o)              ///\n");
+	printf("///                Sistema de Controle de Estacionamentos                 ///\n");
+	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+	printf("///          ===================================================          ///\n");
+	printf("///              Developed by  @rauan-meirelles - Jan, 2021               ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("///                                                                       ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///           =(o ! o) = Atualizar Preço das Vagas = (o ! o)=             ///\n");
+	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
+	printf("///                                                                       ///\n");
+	printf("///           1. Informe o preço anterior, em real:                       ///\n");	
+	printf("///           2. Informe o novo preço, em real:                           ///\n");
+	printf("///           0. Voltar ao menu anterior                                  ///\n");
+	printf("///                                                                       ///\n");
+	printf("///                                                                       ///\n");
+	printf("/////////////////////////////////////////////////////////////////////////////\n");
+	printf("\n");
+    printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
+	getchar();
+}
+
+
+
+
 void telaSobre(void) {
     system("clear");
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
 	printf("///             Universidade Federal do Rio Grande do Norte               ///\n");
-  	printf("///                 Centro de Ensino Superior do Seridó                   ///\n");
-  	printf("///               Departamento de Computação e Tecnologia                 ///\n");
-  	printf("///                  Disciplina DCT1106 -- Programação                    ///\n");
+	printf("///                 Centro de Ensino Superior do Seridó                   ///\n");
+	printf("///               Departamento de Computação e Tecnologia                 ///\n");
+	printf("///                  Disciplina DCT1106 -- Programação                    ///\n");
 	printf("///            Projeto Sistema de Controle de Estacionamentos             ///\n");
  	printf("///              = == ==       PARKINGMOD        = == ==                  ///\n");
 	printf("///              Developed by  @rauan-meirelles - Jan, 2021               ///\n");
