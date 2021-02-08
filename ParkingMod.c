@@ -10,8 +10,20 @@
 
 
 
+
+
+
+
 #include <stdio.h>
 #include <stdlib.h>
+
+
+
+
+
+
+
+
 
 
 
@@ -25,24 +37,40 @@
 ///
 char menuPrincipal(void);
 
-char menuCliente(void);
-void telacadastrovei(void);
-void telarecuperarvei(void);
-void telaatualizarvaga(void);
-void telaexcluirvei(void);
 
-char menuFuncionario(void);
-void telacadastrofun(void);
-void telarecuperarfun(void);
-void telaatualizarfun(void);
-void telaexcluirfun(void);
+void menuCliente(void);
+void telaCadastroVei(void);
+void telaRecuperarVei(void);
+void telaAtualizarVaga(void);
+void telaExcluirVei(void);
 
-char menuFinancas(void);
-void telacadastropre(void);
-void telaatualizarpre(void);
-void telalucrodiario(void);
+
+void menuFuncionario(void);
+void telaCadastroFun(void);
+void telaRecuperarFun(void);
+void telaAtualizarFun(void);
+void telaExcluirFun(void);
+
+
+void menuFinancas(void);
+void telaCadastroPre(void);
+void telaAtualizarPre(void);
+void telaLucroDiario(void);
+
 
 void telaSobre(void);
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -59,10 +87,10 @@ void telaSobre(void);
 /// Programa Principal
 ///
 
+
 int main(void) {
   char opcao;
-  char escolha;
-  do {
+    do {
     opcao = menuPrincipal();
     switch (opcao) {
       case '1': menuCliente();
@@ -79,7 +107,13 @@ int main(void) {
 }
 
 
+
+
 /// Interfaces
+
+
+
+
 
 
 
@@ -134,7 +168,23 @@ char menuPrincipal(void) {
 
 
 
-char menuCliente(void) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void menuCliente(void) {
   system("clear");
   char escolha;
 	printf("\n");
@@ -167,7 +217,19 @@ char menuCliente(void) {
 	printf("Escolha a opção desejada: ");
   	scanf("%c", &escolha);
 	getchar();
-  return escolha;
+  do {
+    switch (escolha) {
+      case '1': telaCadastroVei();
+            break;
+      case '2': telaRecuperarVei();
+            break;
+      case '3': telaAtualizarVaga();
+            break;
+      case '4': telaExcluirVei();
+            break;
+    }
+  } while (escolha != '0');
+  
 }
 
 
@@ -179,7 +241,15 @@ char menuCliente(void) {
 
 
 
-void telacadastrovei(void) {
+
+
+
+
+
+
+
+
+void telaCadastroVei(void) {
   char nome[51];
   char celular[12];
   char placa[9];
@@ -209,6 +279,7 @@ void telacadastrovei(void) {
   	getchar();
 	printf("///           3. Placa do Veículo:                                        ///\n");
   	scanf("%[A-Z 0-9 -]", placa);
+    	getchar();
 	printf("///           0. Voltar ao menu anterior                                  ///\n");
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
@@ -226,7 +297,16 @@ void telacadastrovei(void) {
 
 
 
-void telarecuperarvei(void) {
+
+
+
+
+
+
+
+
+
+void telaRecuperarVei(void) {
   char nome[51];
   char placa[9];
   system("clear");
@@ -248,9 +328,11 @@ void telarecuperarvei(void) {
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           1. Informe seu Nome:                                        ///\n");
-  	scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", nome);  	
+    	scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", nome);
+    	getchar();  	
 	printf("///           2. Informe a placa do Veículo:                              ///\n");
-  	scanf("%[A-Z 0-9 -]", placa);
+    	scanf("%[A-Z 0-9 -]", placa);
+    	getchar();
 	printf("///           0. Voltar ao menu anterior                                  ///\n");
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
@@ -269,7 +351,17 @@ void telarecuperarvei(void) {
 
 
 
-void telaatualizarvaga(void) {
+
+
+
+
+
+
+
+
+
+
+void telaAtualizarVaga(void) {
   char nomeantigo[51];
   char nomenovo[51];
   char placantiga[9];
@@ -296,16 +388,22 @@ void telaatualizarvaga(void) {
 	printf("///                                                                       ///\n");
 	printf("///    1. Informe o nome que deseja substituir:                           ///\n");
   	scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", nomeantigo);
-  	printf("///    2. Informe o celular que deseja substituir:                        ///\n");
+    	getchar();
+  	printf("///    2. Informe o celular que deseja substituir:                      ///\n");
   	scanf("%[0-9]", celularantigo);
+    	getchar();
 	printf("///    3. Informe a placa do Veículo que deseja substituir:               ///\n");
  	scanf("%[A-Z 0-9 -]", placantiga);
+    	getchar();
 	printf("///    4. Informe o novo nome:                                            ///\n");
  	scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", nomenovo);
+    	getchar();
   	printf("///    5. Informe o novo número de celular:                               ///\n");
   	scanf("%[0-9]", celularnovo);
+    	getchar();
   	printf("///    6. Informe a nova placa:                                           ///\n");
   	scanf("%[A-Z 0-9 -]", placanova);
+    	getchar();
 	printf("///    0. Voltar ao menu anterior                                         ///\n");
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
@@ -326,7 +424,19 @@ void telaatualizarvaga(void) {
 
 
 
-void telaexcluirvei(void) {
+
+
+
+
+
+
+
+
+
+
+
+
+void telaExcluirVei(void) {
   char nome[51];
   char celular[12];
   char placa[9];
@@ -350,10 +460,13 @@ void telaexcluirvei(void) {
 	printf("///                                                                       ///\n");
 	printf("///        1. Informe seu Nome:                                           ///\n");
   	scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", nome);
+    	getchar();
   	printf("///        1. Informe seu Celular:                                        ///\n");
   	scanf("%[0-9]", celular);
+    	getchar();
 	printf("///        2. Informe a placa do Veículo que deseja excluir:              ///\n");
   	scanf("%[A-Z 0-9 -]", placa);
+    	getchar();
 	printf("///        0. Voltar ao menu anterior                                     ///\n");
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
@@ -372,7 +485,17 @@ void telaexcluirvei(void) {
 
 
 
-char menuFuncionario(void) {
+
+
+
+
+
+
+
+
+
+
+void menuFuncionario(void) {
   system("clear");
   char escolha;
 	printf("\n");
@@ -402,9 +525,21 @@ char menuFuncionario(void) {
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("Escolha a opção desejada: ");
-  scanf("%c", &escolha);
+  	scanf("%c", &escolha);
 	getchar();
-  return escolha;
+  do {
+    switch (escolha) {
+      case '1': telaCadastroFun();
+            break;
+      case '2': telaRecuperarFun();
+            break;
+      case '3': telaAtualizarFun();
+            break;
+      case '4': telaExcluirFun();
+            break;
+    }
+  } while (escolha != '0');
+  
 }
 
 
@@ -414,7 +549,11 @@ char menuFuncionario(void) {
 
 
 
-void telacadastrofun(void) {
+
+
+
+
+void telaCadastroFun(void) {
   char nome[51];
   char cpf[15];
   char funcao[30];
@@ -438,10 +577,13 @@ void telacadastrofun(void) {
 	printf("///                                                                       ///\n");
 	printf("///           1. Informe seu nome:                                        ///\n");
   	scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", nome);
+    	getchar();
 	printf("///           2. CPF:                                                     ///\n");
   	scanf("%[0-9.-]", cpf);
+    	getchar();
 	printf("///           3. Sua função:                                              ///\n");
   	scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", funcao);
+    	getchar();
 	printf("///           0. Voltar ao menu anterior                                  ///\n");
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
@@ -460,7 +602,17 @@ void telacadastrofun(void) {
 
 
 
-void telarecuperarfun(void) {
+
+
+
+
+
+
+
+
+
+
+void telaRecuperarFun(void) {
   char nome[51];
   char cpf[15];
   system("clear");
@@ -482,9 +634,11 @@ void telarecuperarfun(void) {
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           1. Informe seu CPF:                                         ///\n");
-  	scanf("%[0-9.-]", cpf);	
+  	scanf("%[0-9.-]", cpf);
+    	getchar();	
 	printf("///           2. Informe seu nome:                                        ///\n");
   	scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", nome);
+    	getchar();
 	printf("///           0. Voltar ao menu anterior                                  ///\n");
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
@@ -501,7 +655,15 @@ void telarecuperarfun(void) {
 
 
 
-void telaatualizarfun(void) {
+
+
+
+
+
+
+
+
+void telaAtualizarFun(void) {
   char nomeantigo[51];
   char nomenovo[51];
   char cpfantigo[15];
@@ -528,16 +690,22 @@ void telaatualizarfun(void) {
 	printf("///                                                                       ///\n");
 	printf("///     1. Informe o nome que deseja substituir:                          ///\n");
   	scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", nomeantigo);
+    	getchar();
 	printf("///     2. Informe o CPF que deseja substituir:                           ///\n");
-  	scanf("%[0-9.-]", cpfantigo);	
+  	scanf("%[0-9.-]", cpfantigo);
+    	getchar();	
 	printf("///     3. Informe a Função que deseja substituir:                        ///\n");
   	scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", funcaoantiga);
+    	getchar();
 	printf("///     4. Informe o novo nome:                                           ///\n");
   	scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", nomenovo);
+    	getchar();
 	printf("///     5. Informe o novo CPF:                                            ///\n");
   	scanf("%[0-9.-]", cpfnovo);
+    	getchar();
 	printf("///     6. Informe a nova função:                                         ///\n");
   	scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", funcaonova);
+    	getchar();
 	printf("///     0. Voltar ao menu anterior                                        ///\n");
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
@@ -556,7 +724,17 @@ void telaatualizarfun(void) {
 
 
 
-void telaexcluirfun(void) {
+
+
+
+
+
+
+
+
+
+
+void telaExcluirFun(void) {
   char nome[51];
   char cpf[15];
   char funcao[30];
@@ -579,11 +757,14 @@ void telaexcluirfun(void) {
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
 	printf("///        1. Informe o nome para ser excluido:                           ///\n");
-  	scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", nome);	
+  	scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", nome);
+    	getchar();	
 	printf("///        2. Informe o CPF:                                              ///\n");
  	scanf("%[0-9.-]", cpf);
+    	getchar();
 	printf("///        3. Informe a função:                                           ///\n");
   	scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", funcao);
+    	getchar();
 	printf("///        0. Voltar ao menu anterior                                     ///\n");
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
@@ -602,7 +783,17 @@ void telaexcluirfun(void) {
 
 
 
-char menuFinancas(void) {
+
+
+
+
+
+
+
+
+
+
+void menuFinancas(void) {
   system("clear");
   char escolha;
 	printf("\n");
@@ -625,7 +816,7 @@ char menuFinancas(void) {
 	printf("///           1. Cadastrar preços das vagas (em real)                     ///\n");
 	printf("///           2. Rever preço das Vagas                                    ///\n");
 	printf("///           3. Atualizar preço das Vagas (em real)                      ///\n");
-  	printf("///           4. Lucro diário                                             ///\n");
+ 	printf("///           4. Lucro diário                                             ///\n");
 	printf("///           0. Voltar ao menu anterior                                  ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           Escolha a opção desejada:                                   ///\n");
@@ -634,7 +825,17 @@ char menuFinancas(void) {
 	printf("Escolha a opção desejada: ");
   	scanf("%c", &escolha);
 	getchar();
-  return escolha;
+  do {
+    switch (escolha) {
+      case '1': telaCadastroPre();
+            break;
+      case '3': telaAtualizarPre();
+            break;
+      case '4': telaLucroDiario();
+            break;
+    }
+  } while (escolha != '0');
+  
 }
 
 
@@ -645,7 +846,16 @@ char menuFinancas(void) {
 
 
 
-void telacadastropre(void) {
+
+
+
+
+
+
+
+
+
+void telaCadastroPre(void) {
   char preco[20];
   system("clear");
 	printf("\n");
@@ -667,6 +877,7 @@ void telacadastropre(void) {
 	printf("///                                                                       ///\n");
 	printf("///     1. Informe o preço fixo das vagas por dia, em reais:              ///\n");
   	scanf("%[0-9,]", preco);
+    	getchar();
 	printf("///     0. Voltar ao menu anterior                                        ///\n");
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
@@ -683,7 +894,15 @@ void telacadastropre(void) {
 
 
 
-void telaatualizarpre(void) {
+
+
+
+
+
+
+
+
+void telaAtualizarPre(void) {
   char precoantigo[9];
   char preconovo[9];
   system("clear");
@@ -705,9 +924,11 @@ void telaatualizarpre(void) {
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           1. Informe o preço anterior, em real:                       ///\n");
-  	scanf("%[0-9,]", precoantigo);	
+  	scanf("%[0-9,]", precoantigo);
+   	getchar();	
 	printf("///           2. Informe o novo preço, em real:                           ///\n");
   	scanf("%[0-9,]", preconovo);
+    	getchar();
 	printf("///           0. Voltar ao menu anterior                                  ///\n");
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
@@ -719,7 +940,10 @@ void telaatualizarpre(void) {
 
 
 
-void telalucrodiario(void) {
+
+
+
+void telaLucroDiario(void) {
   char vaga[5];
   system("clear");
 	printf("\n");
@@ -741,6 +965,7 @@ void telalucrodiario(void) {
 	printf("///                                                                       ///\n");
 	printf("///     1. Informe a quantidade de vagas ocupadas atualmente:             ///\n");
   	scanf("%[0-9]", vaga);
+    	getchar();
 	printf("///     0. Voltar ao menu anterior                                        ///\n");
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
@@ -749,6 +974,13 @@ void telalucrodiario(void) {
     printf("\t\t\t>>> Tecle <ENTER> para continuar...\n");
 	getchar();
 }
+
+
+
+
+
+
+
 
 
 
