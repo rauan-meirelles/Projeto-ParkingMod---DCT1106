@@ -14,5 +14,6 @@ int ehData(int, int, int);
 
 int validarNome(char*);
 int validarData(char*);
-int validarCPF(char);
+int validarFone(char*);
+int validarCPF(char*);
 int validarPlaca(char*);
