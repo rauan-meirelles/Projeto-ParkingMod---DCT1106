@@ -4,11 +4,9 @@
 
 #include <time.h>
 #include <stdlib.h>
+#include <stdlib.h>
 #include <string.h>
 
-using System;
-using System.Text.RegularExpressions;
-public class Regex : System.Runtime.Serialization.ISerializable
 
 ////////////////////////////////////////////////////////////////////////
 /// Faz uma pausa por n segundos, com n sendo passado como parâmetro ///
@@ -146,8 +144,10 @@ int validarCPF(char cpf[])
     else if((strcmp(cpf,"00000000000") == 0) || (strcmp(cpf,"11111111111") == 0) || (strcmp(cpf,"22222222222") == 0) ||
             (strcmp(cpf,"33333333333") == 0) || (strcmp(cpf,"44444444444") == 0) || (strcmp(cpf,"55555555555") == 0) ||
             (strcmp(cpf,"66666666666") == 0) || (strcmp(cpf,"77777777777") == 0) || (strcmp(cpf,"88888888888") == 0) ||
-            (strcmp(cpf,"99999999999") == 0))
-        return 0; ///se o CPF tiver todos os números iguais ele é inválido.
+            (strcmp(cpf,"99999999999") == 0)){
+            return 0; ///se o CPF tiver todos os números iguais ele é inválido.
+            }
+        
 
     else
     {
@@ -207,19 +207,34 @@ int validarData(char* data) {
   return 1;
 }
 
+//////////////////////////////////////////////////////
+/// Retorna 1 se string é número de celular válido ///
+/// (apenas dígitos) retorna 0 caso contrário      ///
+//////////////////////////////////////////////////////
+int validarFone(char* fone) {
+  int tam;
+  tam = strlen(fone);
+  if (tam != 11) {
+    return 0;
+  }
+  for (int i = 0; i < tam; i++) {
+    if (!ehDigito(fone[i])) {
+        return 0;
+    }
+  }
+  return 1;
+}
 /////////////////////////////////////////////////////
 ///            Retorna 1 se placa válida          ///
 ///            Retorna 0 caso contrário           ///
 /////////////////////////////////////////////////////
+///
+///                 INCOMPLETA
+///
 int validarPlaca(char* placa) {
-  public bool placa(string placa) {
-    Regex regex = new Regex(@"^[a-zA-Z]{3}\-\d{4}$");
-
-    if (regex.IsMatch(placa)) {
-    return 1;
-    }
-    else {
-    return 0;
-    }
+  int verifica = 1;
+  for (int i = 0; i<12; i++) {
+    if ( placa [i]) {}
   }
+  return verifica;
 }
