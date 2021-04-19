@@ -12,7 +12,7 @@
 #include <time.h>
 #include "cliente.h"
 #include "funcionario.h"
-#include "financas.h"
+#include "gerente.h"
 #include "ultilidade.h"
 
 ////////////////////////////////
@@ -39,7 +39,7 @@ int main(void) {
 						break;
 			case '2': 	moduloFuncionario();
 						break;
-			case '3': 	moduloFinanca();
+			case '3': 	moduloGerente();
 						break;
 			case '4': 	moduloRelatorio();
 						break;
@@ -72,17 +72,17 @@ char menuPrincipal(void) {
 	printf("///                                                                       ///\n");
 	printf("///           1. Módulo Cliente                                           ///\n");
 	printf("///           2. Módulo Funcionário                                       ///\n");
-	printf("///           3. Módulo Finanças                                          ///\n");
-	printf("///           4. Módulo Relatório                                         ///\n");
-  	printf("///           5. Módulo Informações                                       ///\n");
-    printf("///           0. Encerrar programa                                        ///\n");
-    printf("///           Escolha a opção desejada: ");
-  	scanf("%c", &op);
-	printf("///                                                                       ///\n");
-  	printf("///                                                                       ///\n");
+	printf("///           3. Módulo Gerente                                           ///\n");
+  printf("///           4. Módulo Relatório                                         ///\n");
+  printf("///           5. Módulo Informações                                       ///\n");
+  printf("///           0. Encerrar programa                                        ///\n");
+  printf("///           Escolha a opção desejada: ");
+  scanf("%c", &op);
+  printf("///                                                                       ///\n");
+  printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n")
+    printf("\n");
     delay(1);
 	getchar();
     return op;
@@ -111,9 +111,7 @@ void telaSobre(void) {
 	printf("///   estacionamentos, para fins de organização e de admnistração. O      ///\n");
 	printf("///   programa contém os principais módulos e funcionalidades úteis que   ///\n");
 	printf("///   serão usados para tornar o estacionamneto mais viável e mais bem    ///\n");
-	printf("///   avaliado por seus ultilizadores. Como: Vagas disponíveis e          ///\n");
-	printf("///   Indisponíveis, Preços por hora das vagas , entre outros, como       ///\n");
-	printf("///   o Lucro final diário.                                               ///\n");
+	printf("///   avaliado por seus ultilizadores.                                    ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
