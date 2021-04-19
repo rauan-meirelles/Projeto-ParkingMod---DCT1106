@@ -6,20 +6,20 @@ typedef struct cliente Cliente;
 
 struct cliente {
   char nome[51];
-  char placa[9];
+  char celular[12];
+  char placa[12];
   char nasc[11];
-  char funcao[30];
-  char cpf[12];
+  char cpf[11];
   int status;
 };
 
 void moduloCliente(void);
 char menuCliente(void);
 Cliente* telaCadastroVei(void);
-char* telaPesquisarAluno(void);
+char* telaPesquisarVei(void);
 char* telaAtualizarVei(void);
 char* telaExcluirVei(void);
-void telaErroArquivo(void);
+void telaErroCliente(void);
 void cadastrarVei(void);
 void pesquisarVei(void);
 void atualizarVei(void);
