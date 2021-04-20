@@ -23,19 +23,14 @@ void delay(int segundos) {
 }
 
 
-
-
-/////////////////////////////////////////////////////////
-/// Limpa a tela; funciona em Linux / MacOS / Windows ///
-/////////////////////////////////////////////////////////
+///////////////////////////////////////////
+///           Limpa a tela              ///
+///////////////////////////////////////////
 
 void limpaTela(void) {
   if (system("clear") || system("cls")) {
-
   }
 }
-
-
 
 
 //////////////////////////////////////////////////
@@ -183,28 +178,29 @@ int validarCPF(char cpf[])
 ///   Retorna 1 se data válida formato: ddmmaaaa  ///
 ///           Retorna 0 caso contrário            ///
 /////////////////////////////////////////////////////
-///       function developed by @flgorgonio       ///
+///            function by @Marcelo1403           ///
 /////////////////////////////////////////////////////
 
-int validarData(char* data) {
-  int tam, dia, mes, ano;
-  tam = strlen(data);
-  if (tam != 8) {
+int validarData(int dia, int mes, int ano) {
+  int maiorDia;
+  if (dia < 1 || mes < 1 || mes > 12 || ano < 0 || ano > 2020) {
     return 0;
   }
-  for (int i = 0; i < tam; i++) {
-    if (!ehDigito(data[i])) {
-      return 0;
+  if (mes == 2 ) {
+    if (ehBissexto(ano)) {
+      maiorDia = 29;
+    } else {
+      maiorDia = 28;
     }
+  } else if (mes == 4 || mes == 6 || mes == 9 || mes == 11) {
+    maiorDia = 30;
+  } else {
+    maiorDia = 31;
   }
-  dia = (data[0] - '0') * 10 + (data[1] - '0');
-  mes = (data[2] - '0') * 10 + (data[3] - '0');
-  ano = (data[4] - '0') * 1000 + (data[5] - '0') * 100 + 
-        (data[6] - '0') * 10 + (data[7] - '0');
-  if (!ehData(dia, mes, ano)) {
+  if (dia > maiorDia) {
     return 0;
   }
-  return 1;
+  return 1;   
 }
 
 //////////////////////////////////////////////////////
