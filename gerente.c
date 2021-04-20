@@ -118,7 +118,7 @@ char menuGerente(void) {
 	printf("///           1. Cadastrar Gerente                                        ///\n");
 	printf("///           2. Pesquisar Gerente                                        ///\n");
 	printf("///           3. Atualizar Gerente                                        ///\n");
-  	printf("///           4. Excluir Gerente                                          ///\n");
+  printf("///           4. Excluir Gerente                                          ///\n");
 	printf("///           0. Voltar ao menu anterior                                  ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           Escolha a opção desejada:                                   ///\n");
@@ -182,29 +182,37 @@ Gerente* telaCadastrarGerente(void) {
 	printf("///           = (o ! o) = Cadastro de Gerente = (o ! o) = = =             ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
-  	printf("///                                                                       ///\n");
-    ger = (Gerente*) malloc(sizeof(Gerente));
-    do {
-        printf("///           Nome completo: ");
-        scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", ger->nome);
-	    getchar();
-    } while (!validarNome(ger->nome));
-    do {
-        printf("///           Data de Nascimento (dd/mm/aaaa):  ");
-	    scanf("%[0-9/]", ger->nasc);
-        getchar();
-    } while (!validarData(ger->nasc));
-    ger->status = True;
-    do {
-		printf("///           cpf (apenas números): ");
-		scanf("%[0-9 -]", ger->cpf);
-		getchar();
-	} while (!validarCPF(ger->cpf));
-    ger->status = True;
+  printf("///                                                                       ///\n");
+  ger = (Gerente*) malloc(sizeof(Gerente));
+
+  /// Nome do Gerente
+  printf("\nNome completo: ");
+	scanf(" %[^\n]", ger->nome);
+  while(!validarNome(ger->nome)) {
+    printf("Nome invalido, digite novamente: ");
+    scanf(" %[^\n]", ger->nome);
+  }
+
+  /// Data de nascimento do Gerente
+  printf("\nDigite sua data de nascimento (dd/mm/aaaa): ");
+  scanf("%d/%d/%d",&ger->dia, &ger->mes, &ger->ano);
+  while(!validarData(ger->dia, ger->mes, ger->ano)){
+    printf("\nData invalida! Digite novamente (dd/mm/aaaa): ");
+    scanf("%d/%d/%d",&ger->dia, &ger->mes, &ger->ano);
+  }
+  /// Cpf do Gerente
+	printf("\nDigite seu CPF: ");
+  scanf(" %[^\n]", ger->cpf);
+  while(!validarCPF(ger->cpf)){
+    printf("CPF invalido, digite novamente: ");
+    scanf(" %[^\n]", ger->cpf);
+  }
+
+  ger->status = True;
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
-    delay(1);
+  delay(1);
 	return ger;
 }
 
