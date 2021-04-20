@@ -184,32 +184,50 @@ Cliente* telaCadastroVei(void) {
 	printf("///                                                                       ///\n");
 
 	cli = (Cliente*) malloc(sizeof(Cliente));
-	do {
-		printf("///           CPF (apenas números): ");
-		scanf("%[0-9 -]", cli->cpf);
-		getchar();
-	} while (!validarCPF(cli->cpf));
-	do {
-    printf("///           Nome completo: ");
-	  scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", cli->nome);
-	  getchar();
-  } while (!validarNome(cli->nome));
-	do {
-    printf("///           Data de Nascimento (dd/mm/aaaa):");
-	  scanf("%[0-9/]", cli->nasc);
-	  getchar();
-  } while (!validarData(cli->nasc));
-	do {
-		printf("///           Celular  (apenas números com DDD): ");
-		scanf("%[^\n]", cli->celular);
-		getchar();
-	} while (!validarFone(cli->celular));
-	cli->status = True;
-	do {
-		printf("///           Placa do Veículo: ");
-		scanf("%[A-Z 0-9 -]", cli->placa);
-	} while (!validarPlaca(cli->placa));
-	cli->status = True;
+  /// Nome do Cliente
+  printf("///           Digite seu primeiro nome: ");
+	scanf(" %[^\n]", cli->nome);
+  while(!validarNome(cli->nome)) {
+    printf("///           Nome inválido, digite novamente: ");
+    scanf(" %[^\n]", cli->nome);
+  }
+  
+  /// Cpf do Cliente
+	printf("///           Digite seu CPF: ");
+  scanf(" %[^\n]", cli->cpf);
+  while(!validarCPF(cli->cpf)){
+    printf("///           CPF inválido, digite novamente: ");
+    scanf(" %[^\n]", cli->cpf);
+  }
+	
+  /// Data de nascimento do Cliente
+  printf("///           Digite sua data de nascimento (dd/mm/aaaa): ");
+  scanf("%d/%d/%d",&cli->dia, &cli->mes, &cli->ano);
+  while(!validarData(cli->dia, cli->mes, cli->ano)){
+    printf("///           Data inválida! Digite novamente (dd/mm/aaaa): ");
+    scanf("%d/%d/%d",&cli->dia, &cli->mes, &cli->ano);
+  }
+
+  /// Placa do Veículo
+	printf("///           Placa do Veículo: ");
+  scanf(" %[^\n]", cli->placa);
+	while (!validarPlaca(cli->placa)){
+    printf("///           Placa inválida! Digite novamente: ");
+    scanf(" %[^\n]", cli->placa);
+  }
+
+  /// Celular do Cliente
+  printf("///           Celular (apenas números com DDD): ");
+  scanf(" %[^\n]", cli->celular);
+  while (!validarFone(cli->celular)){
+    printf("///           Celular inválido! Digite novamente: ");
+    scanf(" %[^\n]", cli->celular);
+  }
+  cli->status = '1';
+  gravarVei(cli);
+  printf("\nVeículo cadastrado! Digite > Enter < para voltar ao menu Cliente!");
+  getchar();
+  getchar();
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -241,7 +259,7 @@ char* telaPesquisarVei(void) {
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           Informe a placa do Veículo: ");
-	scanf("%[0-9 A-Z -]", placa);
+	scanf(" %[^\n]", placa);
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
@@ -320,15 +338,17 @@ char* telaExcluirVei(void) {
 
 
 void gravarVei(Cliente* cli) {
-	FILE* fp;
-
-	fp = fopen("clientes.dat", "ab");
-	if (fp == NULL) {
-		telaErroCliente();
-	}
-	fwrite(cli, sizeof(Cliente), 1, fp);
-	fclose(fp);
+  FILE* fp;
+  fp = fopen("cliente.dat", "ab");
+  if (fp == NULL) {
+    telaErroCliente();
+    printf("Não é possível continuar o programa...\n");
+  exit(1);
+  }
+  fwrite(cli, sizeof(Cliente), 1, fp);
+  fclose(fp);
 }
+
 
 Cliente* buscarVei(char* placa) {
 	FILE* fp;
@@ -357,7 +377,7 @@ void exibirVei(Cliente* cli) {
 		printf("\n= = = Veículo Cadastrado = = =\n");
 		printf("Nome: %s\n", cli->nome);
 		printf("CPF: %s\n", cli->cpf);
-		printf("Data de Nasc: %s\n", cli->nasc);
+		printf("Data de Nasc: %d/%d/%d\n", cli->dia, cli->mes, cli->ano);
 		printf("Placa do Veículo: %s\n", cli->placa);
 		printf("Celular: %s\n", cli->celular);
 		printf("Status: %d\n", cli->status);
