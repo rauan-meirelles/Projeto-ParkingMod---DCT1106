@@ -122,13 +122,13 @@ char menuFuncionario(void) {
 	printf("///           0. Voltar ao menu anterior                                  ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           Escolha a opção desejada:                                   ///\n");
-    scanf("%c", &op);
-    getchar();
+  scanf("%c", &op);
+  getchar();
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
-    delay(1);
-    return op;
+  printf("\n");
+  delay(1);
+  return op;
 }
 
 void telaErroFuncionario(void) {
@@ -162,9 +162,9 @@ void telaErroFuncionario(void) {
 }
 
 Funcionario* telaCadastrarFuncionario(void) {
-    Funcionario *funci;
-  
-    limpaTela();
+  Funcionario *funci;
+
+  limpaTela();
 	printf("\n");
   printf("/////////////////////////////////////////////////////////////////////////////\n");
   printf("///                                                                       ///\n");
@@ -183,28 +183,34 @@ Funcionario* telaCadastrarFuncionario(void) {
   printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
   printf("///                                                                       ///\n");
   printf("///                                                                       ///\n");
-    funci = (Funcionario*) malloc(sizeof(Funcionario));
-    do {
-        printf("///           Nome completo: ");
-        scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", funci->nome);
-	    getchar();
-    } while (!validarNome(funci->nome));
-    do {
-        printf("///           Data de Nascimento (dd/mm/aaaa):  ");
-	    scanf("%[0-9/]", funci->nasc);
-        getchar();
-    } while (!validarData(funci->nasc));
-    funci->status = True;
-    do {
-		printf("///           cpf (apenas números): ");
-		scanf("%[0-9 -]", funci->cpf);
-		getchar();
-	} while (!validarCPF(funci->cpf));
-    funci->status = True;
+  funci = (Funcionario*) malloc(sizeof(Funcionario));
+  /// Nome do Funcionário
+  printf("\nNome completo: ");
+	scanf(" %[^\n]", funci->nome);
+  while(!validarNome(funci->nome)) {
+    printf("Nome invalido, digite novamente: ");
+    scanf(" %[^\n]", funci->nome);
+  }
+    /// Data de nascimento do Funcionário
+  printf("\nDigite sua data de nascimento (dd/mm/aaaa): ");
+  scanf("%d/%d/%d",&funci->dia, &funci->mes, &funci->ano);
+  while(!validarData(funci->dia, funci->mes, funci->ano)){
+    printf("\nData invalida! Digite novamente (dd/mm/aaaa): ");
+    scanf("%d/%d/%d",&funci->dia, &funci->mes, &funci->ano);
+  }
+  /// Cpf do Funcionário
+	printf("\nDigite seu CPF: ");
+  scanf(" %[^\n]", funci->cpf);
+  while(!validarCPF(funci->cpf)){
+    printf("CPF invalido, digite novamente: ");
+    scanf(" %[^\n]", funci->cpf);
+  }
+  
+  funci->status = True;
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
-    delay(1);
+  delay(1);
 	return funci;
 }
 
