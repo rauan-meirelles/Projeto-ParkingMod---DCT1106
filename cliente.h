@@ -5,11 +5,13 @@
 typedef struct cliente Cliente;
 
 struct cliente {
+  int dia;
+  int mes;
+  int ano;
   char nome[51];
-  char celular[12];
-  char placa[12];
-  char nasc[11];
-  char cpf[11];
+  char celular[11];
+  char placa[8];
+  char cpf[12];
   int status;
 };
 
