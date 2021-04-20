@@ -131,6 +131,5 @@ void moduloRelatorio(void) {
 
 
 void moduloInformacoes(void) {
-	// modulo em desenvolvimento
 	telaSobre();
 }
