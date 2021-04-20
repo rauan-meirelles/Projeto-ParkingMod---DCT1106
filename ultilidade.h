@@ -13,7 +13,7 @@ int ehBissexto(int);
 int ehData(int, int, int);
 
 int validarNome(char*);
-int validarData(char*);
+int validarData(int, int, int);
 int validarFone(char*);
 int validarCPF(char*);
 int validarPlaca(char*);
