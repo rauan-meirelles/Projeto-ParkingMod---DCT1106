@@ -6,9 +6,12 @@ typedef struct funcionario Funcionario;
 
 
 struct funcionario {
-  char placa[12];
+  int dia;
+  int mes;
+  int ano;
+  char placa[8];
   char nome[51];
-  char nasc[11];
+  char nasc[12];
   char cpf[12];
   int status;
 };
