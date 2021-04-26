@@ -16,4 +16,5 @@ int validarNome(char*);
 int validarData(int, int, int);
 int validarFone(char*);
 int validarCPF(char*);
+int validarMatr(char*);
 int validarPlaca(char*);
