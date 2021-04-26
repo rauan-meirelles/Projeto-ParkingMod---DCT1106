@@ -58,8 +58,8 @@ char menuPrincipal(void) {
 	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
 	printf("///              (o ! o) == ==  PARKINGMOD   = == == (o ! o)              ///\n");
 	printf("///                Sistema de Controle de Estacionamentos                 ///\n");
-	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
-	printf("///                                UFRN                                   ///\n");
+  printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+  printf("///                                UFRN                                   ///\n");
 	printf("///          ===================================================          ///\n");
 	printf("///              Developed by  @rauan-meirelles - Jan, 2021               ///\n");
 	printf("///                                                                       ///\n");
@@ -72,16 +72,16 @@ char menuPrincipal(void) {
 	printf("///           1. Módulo Cliente                                           ///\n");
 	printf("///           2. Módulo Funcionário                                       ///\n");
 	printf("///           3. Módulo Gerente                                           ///\n");
-	printf("///           4. Módulo Informações                                       ///\n");
-	printf("///           0. Encerrar programa                                        ///\n");
-	printf("///           Escolha a opção desejada: ");
-	scanf("%c", &op);
-	printf("///                                                                       ///\n");
-	printf("///                                                                       ///\n");
+  printf("///           4. Módulo Informações                                       ///\n");
+  printf("///           0. Encerrar programa                                        ///\n");
+  printf("///           Escolha a opção desejada: ");
+  scanf("%c", &op);
+  printf("///                                                                       ///\n");
+  printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
-	printf("\n");
-	delay(1);
+    printf("\n");
+    delay(1);
 	getchar();
     return op;
 }
@@ -97,7 +97,7 @@ void telaSobre(void) {
 	printf("///               Departamento de Computação e Tecnologia                 ///\n");
 	printf("///                  Disciplina DCT1106 -- Programação                    ///\n");
 	printf("///            Projeto Sistema de Controle de Estacionamentos             ///\n");
-  	printf("///                               UFRN                                    ///\n");
+  printf("///                               UFRN                                    ///\n");
  	printf("///              = == ==       PARKINGMOD        = == ==                  ///\n");
 	printf("///              Developed by  @rauan-meirelles - Jan, 2021               ///\n");
 	printf("///              (o ! o)          (o ! o)        (o ! o)                  ///\n");
@@ -107,7 +107,7 @@ void telaSobre(void) {
 	printf("///                                                                       ///\n");
 	printf("///    Programa utilizado com a intenção de facilitar a admnistração dos  ///\n");
 	printf("///  estacionamentos da UFRN, para fins de organização e de admnistração. ///\n");
-  	printf("///  O programa contém os principais módulos e funcionalidades úteis que  ///\n");
+  printf("///  O programa contém os principais módulos e funcionalidades úteis que  ///\n");
 	printf("///   serão usados para tornar o estacionamneto mais viável e mais bem    ///\n");
 	printf("///   avaliado por seus ultilizadores.                                    ///\n");
 	printf("///                                                                       ///\n");
