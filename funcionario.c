@@ -53,6 +53,7 @@ void pesquisarFuncionario(void) {
 	free(cpf);
 }
 
+
 ///Atualização de Funcionário
 void atualizarFuncionario(void) {
     Funcionario* funci;
@@ -106,6 +107,7 @@ char menuFuncionario(void) {
 	printf("///              (o ! o) == ==  PARKINGMOD   = == == (o ! o)              ///\n");
 	printf("///                Sistema de Controle de Estacionamentos                 ///\n");
 	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+  printf("///                               UFRN                                    ///\n");
 	printf("///          ===================================================          ///\n");
 	printf("///              Developed by  @rauan-meirelles - Jan, 2021               ///\n");
 	printf("///                                                                       ///\n");
@@ -141,6 +143,7 @@ void telaErroFuncionario(void) {
 	printf("///              (o ! o) == ==  PARKINGMOD   = == == (o ! o)              ///\n");
 	printf("///                Sistema de Controle de Estacionamentos                 ///\n");
 	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+  printf("///                               UFRN                                    ///\n");
 	printf("///          ===================================================          ///\n");
 	printf("///              Developed by  @rauan-meirelles - Jan, 2021               ///\n");
 	printf("///                                                                       ///\n");
@@ -173,6 +176,7 @@ Funcionario* telaCadastrarFuncionario(void) {
   printf("///              (o ! o) == ==  PARKINGMOD   = == == (o ! o)              ///\n");
   printf("///                Sistema de Controle de Estacionamentos                 ///\n");
   printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+  printf("///                               UFRN                                    ///\n");
   printf("///          ===================================================          ///\n");
   printf("///              Developed by  @rauan-meirelles - Jan, 2021               ///\n");
   printf("///                                                                       ///\n");
@@ -185,19 +189,15 @@ Funcionario* telaCadastrarFuncionario(void) {
   printf("///                                                                       ///\n");
   funci = (Funcionario*) malloc(sizeof(Funcionario));
   /// Nome do Funcionário
-  printf("\nNome completo: ");
-	scanf(" %[^\n]", funci->nome);
-  while(!validarNome(funci->nome)) {
-    printf("Nome invalido, digite novamente: ");
-    scanf(" %[^\n]", funci->nome);
-  }
-    /// Data de nascimento do Funcionário
-  printf("\nDigite sua data de nascimento (dd/mm/aaaa): ");
-  scanf("%d/%d/%d",&funci->dia, &funci->mes, &funci->ano);
-  while(!validarData(funci->dia, funci->mes, funci->ano)){
-    printf("\nData invalida! Digite novamente (dd/mm/aaaa): ");
-    scanf("%d/%d/%d",&funci->dia, &funci->mes, &funci->ano);
-  }
+  printf("///           Nome completo: ");
+	scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", funci->nome);
+	getchar();
+  
+  /// Data de nascimento do Funcionário
+  printf("///           Data de Nascimento (dd/mm/aaaa):  ");
+	scanf("%[0-9/]", funci->nasc);
+	getchar();
+
   /// Cpf do Funcionário
 	printf("\nDigite seu CPF: ");
   scanf(" %[^\n]", funci->cpf);
@@ -207,6 +207,9 @@ Funcionario* telaCadastrarFuncionario(void) {
   }
   
   funci->status = True;
+  printf("\nFuncionário cadastrado! Digite > Enter < para voltar ao menu Funcionário!");
+  getchar();
+  getchar();
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
@@ -227,6 +230,7 @@ void* telaPesquisarFuncionario(void) {
 	printf("///              (o ! o) == ==  PARKINGMOD   = == == (o ! o)              ///\n");
 	printf("///                Sistema de Controle de Estacionamentos                 ///\n");
 	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+  printf("///                               UFRN                                    ///\n");
 	printf("///          ===================================================          ///\n");
 	printf("///              Developed by  @rauan-meirelles - Jan, 2021               ///\n");
 	printf("///                                                                       ///\n");
@@ -237,7 +241,8 @@ void* telaPesquisarFuncionario(void) {
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           Informe o cpf do Funcionário: ");
-	scanf("%[0-9 -]", cpf);
+	scanf(" %[^\n]", cpf);
+  getchar();
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
@@ -258,6 +263,7 @@ void* telaAtualizarFuncionario(void) {
 	printf("///              (o ! o) == ==  PARKINGMOD   = == == (o ! o)              ///\n");
 	printf("///                Sistema de Controle de Estacionamentos                 ///\n");
 	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+  printf("///                               UFRN                                    ///\n");
 	printf("///          ===================================================          ///\n");
 	printf("///              Developed by  @rauan-meirelles - Jan, 2021               ///\n");
 	printf("///                                                                       ///\n");
@@ -268,7 +274,7 @@ void* telaAtualizarFuncionario(void) {
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           Informe o cpf do Funcionário:");
-	scanf("%[0-9 -]", cpf);
+	scanf(" %[^\n]", cpf);
 	getchar();
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
@@ -291,6 +297,7 @@ void* telaExcluirFuncionario(void) {
 	printf("///              (o ! o) == ==  PARKINGMOD   = == == (o ! o)              ///\n");
 	printf("///                Sistema de Controle de Estacionamentos                 ///\n");
 	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+  printf("///                               UFRN                                    ///\n");
 	printf("///          ===================================================          ///\n");
 	printf("///              Developed by  @rauan-meirelles - Jan, 2021               ///\n");
 	printf("///                                                                       ///\n");
@@ -301,7 +308,7 @@ void* telaExcluirFuncionario(void) {
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           Informe o cpf do Funcionário: ");
-	scanf("%[0-9 -]", cpf);
+	scanf(" %[^\n]", cpf);
 	getchar();
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
@@ -340,6 +347,7 @@ Funcionario* buscarFuncionario(char* cpf) {
 	fclose(fp);
 	return NULL;
 }
+
 
 void exibirFuncionario(Funcionario* funci) {
 
