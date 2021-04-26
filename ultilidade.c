@@ -220,6 +220,27 @@ int validarFone(char* fone) {
   }
   return 1;
 }
+
+///////////////////////////////////////////////////////////////////////////////
+/// Retorna 1 se string recebido corresponder a um número de matrícula válido 
+/// (apenas dígitos) ou retorna 0 caso contrário
+///
+int validarMatr(char* matr) {
+  int tam;
+  tam = strlen(matr);
+  if (tam < 10 || tam > 11) {
+    return 0;
+  }
+  for (int i = 0; i < tam; i++) {
+    if (!ehDigito(matr[i])) {
+      return 0;
+    }
+  }
+  return 1;
+}
+
+
+
 /////////////////////////////////////////////////////
 ///            Retorna 1 se placa válida          ///
 ///            Retorna 0 caso contrário           ///
