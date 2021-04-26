@@ -106,6 +106,7 @@ char menuGerente(void) {
 	printf("///              (o ! o) == ==  PARKINGMOD   = == == (o ! o)              ///\n");
 	printf("///                Sistema de Controle de Estacionamentos                 ///\n");
 	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+  printf("///                                UFRN                                   ///\n");
 	printf("///          ===================================================          ///\n");
 	printf("///              Developed by  @rauan-meirelles - Jan, 2021               ///\n");
 	printf("///                                                                       ///\n");
@@ -122,13 +123,13 @@ char menuGerente(void) {
 	printf("///           0. Voltar ao menu anterior                                  ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           Escolha a opção desejada:                                   ///\n");
-    scanf("%c", &op);
-    getchar();
+  scanf("%c", &op);
+  getchar();
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
-    delay(1);
-    return op;
+  printf("\n");
+  delay(1);
+  return op;
 }
 
 void telaErroGerente(void) {
@@ -141,6 +142,7 @@ void telaErroGerente(void) {
 	printf("///              (o ! o) == ==  PARKINGMOD   = == == (o ! o)              ///\n");
 	printf("///                Sistema de Controle de Estacionamentos                 ///\n");
 	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+  printf("///                                UFRN                                   ///\n");
 	printf("///          ===================================================          ///\n");
 	printf("///              Developed by  @rauan-meirelles - Jan, 2021               ///\n");
 	printf("///                                                                       ///\n");
@@ -162,9 +164,9 @@ void telaErroGerente(void) {
 }
 
 Gerente* telaCadastrarGerente(void) {
-    Gerente *ger;
+  Gerente *ger;
   
-    limpaTela();
+  limpaTela();
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
@@ -173,6 +175,7 @@ Gerente* telaCadastrarGerente(void) {
 	printf("///              (o ! o) == ==  PARKINGMOD   = == == (o ! o)              ///\n");
 	printf("///                Sistema de Controle de Estacionamentos                 ///\n");
 	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+  printf("///                                UFRN                                   ///\n");
 	printf("///          ===================================================          ///\n");
 	printf("///              Developed by  @rauan-meirelles - Jan, 2021               ///\n");
 	printf("///                                                                       ///\n");
@@ -186,29 +189,24 @@ Gerente* telaCadastrarGerente(void) {
   ger = (Gerente*) malloc(sizeof(Gerente));
 
   /// Nome do Gerente
-  printf("\nNome completo: ");
-	scanf(" %[^\n]", ger->nome);
-  while(!validarNome(ger->nome)) {
-    printf("Nome invalido, digite novamente: ");
-    scanf(" %[^\n]", ger->nome);
-  }
-
+  printf("///           Nome completo: ");
+	scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", ger->nome);
+	getchar();
   /// Data de nascimento do Gerente
-  printf("\nDigite sua data de nascimento (dd/mm/aaaa): ");
-  scanf("%d/%d/%d",&ger->dia, &ger->mes, &ger->ano);
-  while(!validarData(ger->dia, ger->mes, ger->ano)){
-    printf("\nData invalida! Digite novamente (dd/mm/aaaa): ");
-    scanf("%d/%d/%d",&ger->dia, &ger->mes, &ger->ano);
-  }
+  printf("///           Data de Nascimento (dd/mm/aaaa):  ");
+	scanf("%[0-9/]", ger->nasc);
+	getchar();
   /// Cpf do Gerente
-	printf("\nDigite seu CPF: ");
+	printf("///           Digite seu CPF: ");
   scanf(" %[^\n]", ger->cpf);
   while(!validarCPF(ger->cpf)){
     printf("CPF invalido, digite novamente: ");
     scanf(" %[^\n]", ger->cpf);
   }
-
   ger->status = True;
+  printf("\nGerente cadastrado! Digite > Enter < para voltar ao menu Gerente!");
+  getchar();
+  getchar();
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
@@ -229,6 +227,7 @@ void* telaPesquisarGerente(void) {
 	printf("///              (o ! o) == ==  PARKINGMOD   = == == (o ! o)              ///\n");
 	printf("///                Sistema de Controle de Estacionamentos                 ///\n");
 	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+  printf("///                                UFRN                                   ///\n");
 	printf("///          ===================================================          ///\n");
 	printf("///              Developed by  @rauan-meirelles - Jan, 2021               ///\n");
 	printf("///                                                                       ///\n");
@@ -239,7 +238,8 @@ void* telaPesquisarGerente(void) {
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           Informe o cpf do Gerente: ");
-	scanf("%[0-9 -]", cpf);
+	scanf(" %[^\n]", cpf);
+  getchar();
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
@@ -260,6 +260,7 @@ void* telaAtualizarGerente(void) {
 	printf("///              (o ! o) == ==  PARKINGMOD   = == == (o ! o)              ///\n");
 	printf("///                Sistema de Controle de Estacionamentos                 ///\n");
 	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+  printf("///                                UFRN                                   ///\n");
 	printf("///          ===================================================          ///\n");
 	printf("///              Developed by  @rauan-meirelles - Jan, 2021               ///\n");
 	printf("///                                                                       ///\n");
@@ -270,7 +271,7 @@ void* telaAtualizarGerente(void) {
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           Informe o cpf do Gerente:");
-	scanf("%[0-9 -]", cpf);
+	scanf(" %[^\n]", cpf);
 	getchar();
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
@@ -293,6 +294,7 @@ void* telaExcluirGerente(void) {
 	printf("///              (o ! o) == ==  PARKINGMOD   = == == (o ! o)              ///\n");
 	printf("///                Sistema de Controle de Estacionamentos                 ///\n");
 	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+  printf("///                                UFRN                                   ///\n");
 	printf("///          ===================================================          ///\n");
 	printf("///              Developed by  @rauan-meirelles - Jan, 2021               ///\n");
 	printf("///                                                                       ///\n");
@@ -303,7 +305,7 @@ void* telaExcluirGerente(void) {
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           Informe o cpf do Gerente: ");
-	scanf("%[0-9 -]", cpf);
+	scanf(" %[^\n]", cpf);
 	getchar();
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
