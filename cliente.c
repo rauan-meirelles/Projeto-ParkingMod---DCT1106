@@ -39,47 +39,44 @@ void cadastrarVei(void) {
 /// Pesquisa de Veículo
 void pesquisarVei(void) {
 	Cliente* cli;
-	char* placa;
+	char* matr;
 
-	placa = telaPesquisarVei();
-	cli = buscarVei(placa);
-	if (cli == NULL) {
-    	printf("\n\nVeículo não encontrado!\n\n");
-	}
+	matr = telaPesquisarVei();
+	cli = buscarVei(matr);
 	exibirVei(cli);
 	free(cli); 
-	free(placa);
+	free(matr);
 }
 
 /// Atualização de Veículo
 void atualizarVei(void) {
 	Cliente* cli;
-	char* placa;
+	char* matr;
 
-	placa = telaAtualizarVei();
-	cli = buscarVei(placa);
+	matr = telaAtualizarVei();
+	cli = buscarVei(matr);
 	if (cli == NULL) {
     	printf("\n\nVeículo não encontrado!\n\n");
   	} else {
 		  cli = telaCadastroVei();
-		  strcpy(cli->placa, placa);
+		  strcpy(cli->matr, matr);
 		  regravarVei(cli);
 		  // Outra opção:
-		  // excluirVei(placa);
+		  // excluirVei(matr);
 		  // gravarVei(cli);
 		  free(cli);
 	}
-	free(placa);
+	free(matr);
 }
 
 /// Exclusão de Veículo
 void excluirVei(void) {
 	Cliente* cli;
-	char *placa;
+	char *matr;
 
-	placa = telaExcluirVei();
+	matr = telaExcluirVei();
 	cli = (Cliente*) malloc(sizeof(Cliente));
-	cli = buscarVei(placa);
+	cli = buscarVei(matr);
 	if (cli == NULL) {
     	printf("\n\nVeículo não encontrado!\n\n");
   	} else {
@@ -87,7 +84,7 @@ void excluirVei(void) {
 		  regravarVei(cli);
 		  free(cli);
 	}
-	free(placa);
+	free(matr);
 }
 
 ///Telas
@@ -104,6 +101,7 @@ char menuCliente(void) {
 	printf("///              (o ! o) == ==  PARKINGMOD   = == == (o ! o)              ///\n");
 	printf("///                Sistema de Controle de Estacionamentos                 ///\n");
 	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+  printf("///                                UFRN                                   ///\n");
 	printf("///          ===================================================          ///\n");
 	printf("///              Developed by  @rauan-meirelles - Jan, 2021               ///\n");
 	printf("///                                                                       ///\n");
@@ -140,6 +138,7 @@ void telaErroCliente(void) {
 	printf("///              (o ! o) == ==  PARKINGMOD   = == == (o ! o)              ///\n");
 	printf("///                Sistema de Controle de Estacionamentos                 ///\n");
 	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+  printf("///                                UFRN                                   ///\n");
 	printf("///          ===================================================          ///\n");
 	printf("///              Developed by  @rauan-meirelles - Jan, 2021               ///\n");
 	printf("///                                                                       ///\n");
@@ -173,6 +172,7 @@ Cliente* telaCadastroVei(void) {
 	printf("///              (o ! o) == ==  PARKINGMOD   = == == (o ! o)              ///\n");
 	printf("///                Sistema de Controle de Estacionamentos                 ///\n");
 	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+  printf("///                                UFRN                                   ///\n");
 	printf("///          ===================================================          ///\n");
 	printf("///              Developed by  @rauan-meirelles - Jan, 2021               ///\n");
 	printf("///                                                                       ///\n");
@@ -184,47 +184,41 @@ Cliente* telaCadastroVei(void) {
 	printf("///                                                                       ///\n");
 
 	cli = (Cliente*) malloc(sizeof(Cliente));
+  /// Mátricula
+  do {
+		printf("///           Matrícula (apenas números): ");
+		scanf("%[^\n]", cli->matr);
+		getchar();
+	} while (!validarMatr(cli->matr));
   /// Nome do Cliente
-  printf("///           Digite seu primeiro nome: ");
-	scanf(" %[^\n]", cli->nome);
-  while(!validarNome(cli->nome)) {
-    printf("///           Nome inválido, digite novamente: ");
-    scanf(" %[^\n]", cli->nome);
-  }
-  
+  printf("///           Nome completo: ");
+	scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", cli->nome);
+	getchar();
   /// Cpf do Cliente
-	printf("///           Digite seu CPF: ");
+	do{ printf("///           Digite seu CPF: ");
   scanf(" %[^\n]", cli->cpf);
-  while(!validarCPF(cli->cpf)){
-    printf("///           CPF inválido, digite novamente: ");
-    scanf(" %[^\n]", cli->cpf);
-  }
+  getchar();
+  } while(!validarCPF(cli->cpf));
 	
   /// Data de nascimento do Cliente
-  printf("///           Digite sua data de nascimento (dd/mm/aaaa): ");
-  scanf("%d/%d/%d",&cli->dia, &cli->mes, &cli->ano);
-  while(!validarData(cli->dia, cli->mes, cli->ano)){
-    printf("///           Data inválida! Digite novamente (dd/mm/aaaa): ");
-    scanf("%d/%d/%d",&cli->dia, &cli->mes, &cli->ano);
-  }
+  printf("///           Data de Nascimento (dd/mm/aaaa):  ");
+	scanf("%[0-9/]", cli->nasc);
+	getchar();
 
   /// Placa do Veículo
-	printf("///           Placa do Veículo: ");
-  scanf(" %[^\n]", cli->placa);
-	while (!validarPlaca(cli->placa)){
-    printf("///           Placa inválida! Digite novamente: ");
+	do {
+    printf("///           Placa do Veículo: ");
     scanf(" %[^\n]", cli->placa);
-  }
+    getchar();
+	} while (!validarPlaca(cli->placa));
 
   /// Celular do Cliente
+  do{
   printf("///           Celular (apenas números com DDD): ");
-  scanf(" %[^\n]", cli->celular);
-  while (!validarFone(cli->celular)){
-    printf("///           Celular inválido! Digite novamente: ");
-    scanf(" %[^\n]", cli->celular);
-  }
-  cli->status = '1';
-  gravarVei(cli);
+  scanf("%[^\n]", cli->celular);
+  getchar();
+  } while (!validarFone(cli->celular));
+  cli->status = True;
   printf("\nVeículo cadastrado! Digite > Enter < para voltar ao menu Cliente!");
   getchar();
   getchar();
@@ -237,9 +231,9 @@ Cliente* telaCadastroVei(void) {
 }
 
 char* telaPesquisarVei(void) {
-	char* placa;
+	char* matr;
 
-	placa = (char*) malloc(12*sizeof(char));
+	matr = (char*) malloc(12*sizeof(char));
 	limpaTela();
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -249,6 +243,7 @@ char* telaPesquisarVei(void) {
 	printf("///              (o ! o) == ==  PARKINGMOD   = == == (o ! o)              ///\n");
 	printf("///                Sistema de Controle de Estacionamentos                 ///\n");
 	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+  printf("///                                UFRN                                   ///\n");
 	printf("///          ===================================================          ///\n");
 	printf("///              Developed by  @rauan-meirelles - Jan, 2021               ///\n");
 	printf("///                                                                       ///\n");
@@ -258,21 +253,22 @@ char* telaPesquisarVei(void) {
 	printf("///           = (o ! o)  =   Pesquisar Veículo  =  (o ! o)  =             ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
-	printf("///           Informe a placa do Veículo: ");
-	scanf(" %[^\n]", placa);
+	printf("///           Informe sua Matrícula: ");
+	scanf("%[0-9]", matr);
+  getchar();
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
 	delay(1);
-	return placa;
+	return matr;
 }
 
 
 
 char* telaAtualizarVei(void) {
-	char* placa;
+	char* matr;
 
-	placa = (char*) malloc(12*sizeof(char));
+	matr = (char*) malloc(12*sizeof(char));
 	limpaTela();
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -282,6 +278,7 @@ char* telaAtualizarVei(void) {
 	printf("///              (o ! o) == ==  PARKINGMOD   = == == (o ! o)              ///\n");
 	printf("///                Sistema de Controle de Estacionamentos                 ///\n");
 	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+  printf("///                                UFRN                                   ///\n");
 	printf("///          ===================================================          ///\n");
 	printf("///              Developed by  @rauan-meirelles - Jan, 2021               ///\n");
 	printf("///                                                                       ///\n");
@@ -291,22 +288,22 @@ char* telaAtualizarVei(void) {
 	printf("///           = (o ! o)   =  Atualizar Veículo  =   (o ! o) =             ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
-	printf("///           Informe a placa do Veículo:");
-	scanf("%[A-Z 0-9 -]", placa);
+	printf("///           Informe a Matrícula do Proprietário do Veículo:");
+	scanf("%[A-Z 0-9 -]", matr);
 	getchar();
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
 	delay(1);
-  	return placa;
+  	return matr;
 }
 
 char* telaExcluirVei(void) {
-	char *placa;
+	char *matr;
 
-	placa = (char*) malloc(12*sizeof(char));
-  	limpaTela();
+	matr = (char*) malloc(12*sizeof(char));
+  limpaTela();
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
@@ -315,6 +312,7 @@ char* telaExcluirVei(void) {
 	printf("///              (o ! o) == ==  PARKINGMOD   = == == (o ! o)              ///\n");
 	printf("///                Sistema de Controle de Estacionamentos                 ///\n");
 	printf("///          = = = = = = = = = = = = = = = = = = = = = = = = = =          ///\n");
+  printf("///                                UFRN                                   ///\n");
 	printf("///          ===================================================          ///\n");
 	printf("///              Developed by  @rauan-meirelles - Jan, 2021               ///\n");
 	printf("///                                                                       ///\n");
@@ -324,15 +322,15 @@ char* telaExcluirVei(void) {
 	printf("///           = (o ! o)   =   Excluir Veículo  =   (o ! o)  =             ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
-	printf("///           Informe a Placa do Veículo: ");
-	scanf("%[A-Z 0-9 -]", placa);
+	printf("///           Informe a Matrícula do Proprietário do Veículo: ");
+	scanf("%[A-Z 0-9 -]", matr);
 	getchar();
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
 	delay(1);
-	return placa;
+	return matr;
 }
 
 
@@ -350,17 +348,17 @@ void gravarVei(Cliente* cli) {
 }
 
 
-Cliente* buscarVei(char* placa) {
+Cliente* buscarVei(char* matr) {
 	FILE* fp;
 	Cliente* cli;
 
 	cli = (Cliente*) malloc(sizeof(Cliente));
-	fp = fopen("Clientes.dat", "rb");
+	fp = fopen("cliente.dat", "rb");
 	if (fp == NULL) {
 		telaErroCliente();
 	}
 	while(fread(cli, sizeof(Cliente), 1, fp)) {
-		if ((strcmp(cli->placa, placa) == 0) && (cli->status == True)) {
+		if ((strcmp(cli->matr, matr) == 0) && (cli->status == True)) {
 			fclose(fp);
 			return cli;
 		}
@@ -375,10 +373,10 @@ void exibirVei(Cliente* cli) {
 		printf("\n= = = Veículo Inexistente = = =\n");
 	} else {
 		printf("\n= = = Veículo Cadastrado = = =\n");
-		printf("Nome: %s\n", cli->nome);
-		printf("CPF: %s\n", cli->cpf);
-		printf("Data de Nasc: %d/%d/%d\n", cli->dia, cli->mes, cli->ano);
-		printf("Placa do Veículo: %s\n", cli->placa);
+		printf("Matrícula: %s\n", cli->matr);
+    printf("Placa: %s\n", cli->placa);
+		printf("Nome do Proprietário: %s\n", cli->nome);
+		printf("Data de Nasc: %s\n", cli->nasc);
 		printf("Celular: %s\n", cli->celular);
 		printf("Status: %d\n", cli->status);
 	}
@@ -386,13 +384,14 @@ void exibirVei(Cliente* cli) {
 	getchar();
 }
 
+
 void regravarVei(Cliente* cli) {
 	int achou;
 	FILE* fp;
 	Cliente* cliLido;
 
 	cliLido = (Cliente*) malloc(sizeof(Cliente));
-	fp = fopen("clientes.dat", "r+b");
+	fp = fopen("cliente.dat", "r+b");
 	if (fp == NULL) {
 		telaErroCliente();
 	}
@@ -400,7 +399,7 @@ void regravarVei(Cliente* cli) {
 	achou = False;
 	while(fread(cliLido, sizeof(Cliente), 1, fp) && !achou) {
 		//fread(cliLido, sizeof(Cliente), 1, fp);
-		if (strcmp(cliLido->placa, cli->placa) == 0) {
+		if (strcmp(cliLido->matr, cli->matr) == 0) {
 			achou = True;
 			fseek(fp, -1*sizeof(Cliente), SEEK_CUR);
         	fwrite(cli, sizeof(Cliente), 1, fp);
