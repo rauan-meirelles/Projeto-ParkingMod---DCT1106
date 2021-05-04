@@ -5,6 +5,9 @@
 typedef struct cliente Cliente;
 
 struct cliente {
+  int dia;
+  int mes;
+  int ano;
   char nasc[11];
   char nome[51];
   char matr[12];
