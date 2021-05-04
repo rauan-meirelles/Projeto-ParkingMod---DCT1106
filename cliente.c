@@ -191,20 +191,22 @@ Cliente* telaCadastroVei(void) {
 		getchar();
 	} while (!validarMatr(cli->matr));
   /// Nome do Cliente
-  printf("///           Nome completo: ");
-	scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", cli->nome);
-	getchar();
+  do {
+    printf("///           Nome completo: ");
+    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", cli->nome);
+    getchar();
+  } while (!validarNome(cli->nome));
   /// Cpf do Cliente
-	do{ printf("///           Digite seu CPF: ");
-  scanf(" %[^\n]", cli->cpf);
-  getchar();
+	do{ 
+    printf("///           Digite seu CPF: ");
+    scanf(" %[^\n]", cli->cpf);
+    getchar();
   } while(!validarCPF(cli->cpf));
 	
   /// Data de nascimento do Cliente
-  printf("///           Data de Nascimento (dd/mm/aaaa):  ");
-	scanf("%[0-9/]", cli->nasc);
-	getchar();
-
+    printf("///           Data de Nascimento (dd/mm/aaaa):  ");
+    scanf("%[0-9/]", cli->nasc);
+   getchar();
   /// Placa do Veículo
 	do {
     printf("///           Placa do Veículo: ");
@@ -227,7 +229,7 @@ Cliente* telaCadastroVei(void) {
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("\n");
 	delay(1);
-  	return cli;
+  return cli;
 }
 
 char* telaPesquisarVei(void) {
