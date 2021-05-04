@@ -115,7 +115,7 @@ int ehData(int dd, int mm, int aa) {
 int validarNome(char* nome) {
   for (int i=0; nome[i]!='\0'; i++) {
     if (!ehLetra(nome[i])) {
-      return 0;
+      return 1;
     }
   }
 	return 1;
@@ -245,9 +245,8 @@ int validarMatr(char* matr) {
 ///            Retorna 1 se placa válida          ///
 ///            Retorna 0 caso contrário           ///
 /////////////////////////////////////////////////////
-///
-///                 INCOMPLETA
-///
+///                 INCOMPLETA                    ///
+/////////////////////////////////////////////////////
 int validarPlaca(char* placa) {
   int verifica = 1;
   for (int i = 0; i<12; i++) {
