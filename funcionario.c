@@ -189,9 +189,11 @@ Funcionario* telaCadastrarFuncionario(void) {
   printf("///                                                                       ///\n");
   funci = (Funcionario*) malloc(sizeof(Funcionario));
   /// Nome do Funcionário
+  do {
   printf("///           Nome completo: ");
 	scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", funci->nome);
 	getchar();
+  } while (!validarNome(funci->nome));
   
   /// Data de nascimento do Funcionário
   printf("///           Data de Nascimento (dd/mm/aaaa):  ");
