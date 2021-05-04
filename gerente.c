@@ -189,9 +189,11 @@ Gerente* telaCadastrarGerente(void) {
   ger = (Gerente*) malloc(sizeof(Gerente));
 
   /// Nome do Gerente
-  printf("///           Nome completo: ");
-	scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", ger->nome);
-	getchar();
+  do{
+    printf("///           Nome completo: ");
+    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", ger->nome);
+    getchar();
+  } while (!validarNome(ger->nome));
   /// Data de nascimento do Gerente
   printf("///           Data de Nascimento (dd/mm/aaaa):  ");
 	scanf("%[0-9/]", ger->nasc);
