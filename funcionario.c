@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "funcionario.h"
-#include "ultilidade.h"
+#include "utilidade.h"
 
 typedef struct funcionario Funcionario;
 
