@@ -16,6 +16,7 @@
 void moduloRelatorio(void) {
 	char opcao;
   Cliente* cli;
+  cli = (Cliente*) malloc(sizeof(Cliente));
 	do {
 		opcao = menuRelatorio();
 		switch(opcao) {
