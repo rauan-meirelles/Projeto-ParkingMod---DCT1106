@@ -9,13 +9,9 @@ struct gerente {
   int dia;
   int mes;
   int ano;
-  // char placa[8];
   char nome[51];
-  // char nasc[12];
   char cpf[12];
   int status;
-
-  
 };
 
 
