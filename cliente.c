@@ -90,7 +90,7 @@ void excluirVei(void) {
 ///Telas
 
 char menuCliente(void) {
-  	char op;
+  char op;
 
 	limpaTela();
 	printf("\n");
@@ -162,7 +162,7 @@ void telaErroCliente(void) {
 
 Cliente* telaCadastroVei(void) {
 	Cliente *cli;
-
+  
 	limpaTela();
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
@@ -184,45 +184,63 @@ Cliente* telaCadastroVei(void) {
 	printf("///                                                                       ///\n");
 
 	cli = (Cliente*) malloc(sizeof(Cliente));
-  /// Mátricula
-  do {
-		printf("///           Matrícula (apenas números): ");
-		scanf("%[^\n]", cli->matr);
-		getchar();
-	} while (!validarMatr(cli->matr));
+  /// Mátricula 
+
+  printf("///           Matrícula (apenas números): ");
+  scanf("%[^\n]", cli->matr);
+  getchar();
+	while (!validarMatr(cli->matr)){
+    printf("\nMatrícula invalida! Digite novamente: ");
+    scanf("%[^\n]", cli->matr);
+  }
+
   /// Nome do Cliente
-  do {
-    printf("///           Nome completo: ");
+  printf("///           Nome completo: ");
+  scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", cli->nome);
+  getchar();
+  while (!validarNome(cli->nome)){
+    printf("Nome invalido, digite novamente: ");
     scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", cli->nome);
-    getchar();
-  } while (!validarNome(cli->nome));
-  /// Cpf do Cliente
-	do{ 
-    printf("///           Digite seu CPF: ");
+  }
+
+  /// Cpf do Cliente	 
+  printf("///           Digite seu CPF: ");
+  scanf(" %[^\n]", cli->cpf);
+  getchar();
+  while(!validarCPF(cli->cpf)) {
+    printf("CPF invalido, digite novamente: ");
     scanf(" %[^\n]", cli->cpf);
-    getchar();
-  } while(!validarCPF(cli->cpf));
+  }
 	
   /// Data de nascimento do Cliente
-    printf("///           Data de Nascimento (dd/mm/aaaa):  ");
-    scanf("%[0-9/]", cli->nasc);
-   getchar();
+  printf("///           Data de Nascimento (dd/mm/aaaa):  ");
+  scanf("%d/%d/%d", &cli->dia, &cli->mes, &cli->ano);
+  getchar();
+  while (!ehData(cli->dia, cli->mes, cli->ano)){
+    printf("\nData invalida! Digite novamente (dd/mm/aaaa): ");
+    scanf("%d/%d/%d",&cli->dia, &cli->mes, &cli->ano);
+  }
+
   /// Placa do Veículo
-	do {
-    printf("///           Placa do Veículo: ");
+  printf("///           Placa do Veículo: ");
+  scanf(" %[^\n]", cli->placa);
+  getchar();
+	while (!validarPlaca(cli->placa)) {
+    printf("\nPlaca invalida! Digite novamente: ");
     scanf(" %[^\n]", cli->placa);
-    getchar();
-	} while (!validarPlaca(cli->placa));
+  }
 
   /// Celular do Cliente
-  do{
   printf("///           Celular (apenas números com DDD): ");
   scanf("%[^\n]", cli->celular);
   getchar();
-  } while (!validarFone(cli->celular));
+  while (!validarFone(cli->celular)) {
+    printf("\nCelular invalido! Digite novamente: ");
+    scanf(" %[^\n]", cli->celular);
+  }
+
   cli->status = True;
   printf("\nVeículo cadastrado! Digite > Enter < para voltar ao menu Cliente!");
-  getchar();
   getchar();
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
@@ -378,7 +396,7 @@ void exibirVei(Cliente* cli) {
 		printf("Matrícula: %s\n", cli->matr);
     printf("Placa: %s\n", cli->placa);
 		printf("Nome do Proprietário: %s\n", cli->nome);
-		printf("Data de Nasc: %s\n", cli->nasc);
+		printf("Data de Nasc: %d/%d/%d\n", cli->dia,cli->mes,cli->ano);
 		printf("Celular: %s\n", cli->celular);
 		printf("Status: %d\n", cli->status);
 	}
@@ -411,3 +429,4 @@ void regravarVei(Cliente* cli) {
 	fclose(fp);
 	free(cliLido);
 }
+
