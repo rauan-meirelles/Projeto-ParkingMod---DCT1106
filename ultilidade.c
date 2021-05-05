@@ -3,7 +3,7 @@
 ////////////////////////////////////////
 
 #include <time.h>
-#include <stdlib.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -173,36 +173,6 @@ int validarCPF(char cpf[])
     return 1;
 }
 
-
-/////////////////////////////////////////////////////
-///   Retorna 1 se data válida formato: ddmmaaaa  ///
-///           Retorna 0 caso contrário            ///
-/////////////////////////////////////////////////////
-///            function by @Marcelo1403           ///
-/////////////////////////////////////////////////////
-
-int validarData(int dia, int mes, int ano) {
-  int maiorDia;
-  if (dia < 1 || mes < 1 || mes > 12 || ano < 0 || ano > 2020) {
-    return 0;
-  }
-  if (mes == 2 ) {
-    if (ehBissexto(ano)) {
-      maiorDia = 29;
-    } else {
-      maiorDia = 28;
-    }
-  } else if (mes == 4 || mes == 6 || mes == 9 || mes == 11) {
-    maiorDia = 30;
-  } else {
-    maiorDia = 31;
-  }
-  if (dia > maiorDia) {
-    return 0;
-  }
-  return 1;   
-}
-
 //////////////////////////////////////////////////////
 /// Retorna 1 se string é número de celular válido ///
 /// (apenas dígitos) retorna 0 caso contrário      ///
@@ -245,12 +215,23 @@ int validarMatr(char* matr) {
 ///            Retorna 1 se placa válida          ///
 ///            Retorna 0 caso contrário           ///
 /////////////////////////////////////////////////////
-///                 INCOMPLETA                    ///
-/////////////////////////////////////////////////////
 int validarPlaca(char* placa) {
   int verifica = 1;
-  for (int i = 0; i<12; i++) {
-    if ( placa [i]) {}
+  for (int i = 0; i < 3; i++) {
+    if (!ehLetra(placa[i])) {
+      verifica = 0;
+    }
+  }
+  if (!ehDigito(placa[3])) {
+      verifica = 0;
+  }
+  if (!ehDigito(placa[4]) && (!ehLetra(placa[4]))) {
+      verifica = 0;
+  }
+  for (int i = 5; i < 7; i++) {
+    if (!ehDigito(placa[i])) {
+      verifica = 0;
+    }
   }
   return verifica;
 }
