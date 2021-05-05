@@ -12,11 +12,20 @@
 typedef struct estaciona Estaciona;
 
 void moduloEstaciona(void) {
+  Estaciona* est;
+  int clienteOk;
+
 	char opcao;
 	do {
 		opcao = menuEstaciona();
 		switch(opcao) {
-			case '1': 	telaEstacionarVei();
+			case '1': 	est = telaEstacionarVei();
+                  clienteOk = verificaCadastroCliente(est->placa);
+                  if (clienteOk) {
+                    printf("Vaga alocada! Pressione >>>ENTER<<< para voltar ao Menu Estacionamento");
+                    getchar();
+                    gravarEst(est);
+                  }
 				break;
 			case '2': 	telaRetirarVei();
 				break;
@@ -89,64 +98,24 @@ Estaciona* telaEstacionarVei(void) {
 	est = (Estaciona*) malloc(sizeof(Estaciona));
 
   /// Data de nascimento do Veiculo
-  printf("///           Data de Estacionamento do Veículo (dd/mm/aaaa):  ");
+  printf("///        Data de Estacionamento do Veículo (dd/mm/aaaa):  ");
   scanf("%d/%d/%d", &est->dia, &est->mes, &est->ano);
   getchar();
   while (!ehData(est->dia, est->mes, est->ano)){
-    printf("\nData invalida! Digite novamente (dd/mm/aaaa): ");
+    printf("\n///        Data invalida! Digite novamente (dd/mm/aaaa): ");
     scanf("%d/%d/%d",&est->dia, &est->mes, &est->ano);
   }
 
   /// Placa do Veículo
-  printf("///           Placa do Veículo: ");
+  printf("///        Placa do Veículo: ");
   scanf(" %[^\n]", est->placa);
   getchar();
 	while (!validarPlaca(est->placa)) {
-    printf("\nPlaca invalida! Digite novamente: ");
+    printf("\n///        Placa invalida! Digite novamente: ");
     scanf(" %[^\n]", est->placa);
   }
 
-  FILE* fp;
-
-  fp = fopen("cliente.dat", "rb");
-  if (fp == NULL) {
-    telaErro();
-  }
-  Cliente* clix;
-  clix = (Cliente*) malloc(sizeof(Cliente));
-  int verificador = 1;
-  while(fread(clix, sizeof(Cliente), 1, fp)) {
-    if ((strcmp(est->placa, clix->placa) == 0) && (clix->status == True)) {
-      verificador = 0;
-      printf("\nVaga alocada! Digite > Enter < para voltar ao menu Estacionamento!");
-      getchar();
-      fclose(fp);
-      free(clix);
-
-      FILE* fp;
-      fp = fopen("estacionamento.dat", "ab");
-
-      if (fp == NULL) {
-        telaErro();
-        printf("Não é possível continuar o programa...\n");
-        exit(1);
-      }
-
-      fwrite(est, sizeof(Estaciona), 1, fp);
-      fclose(fp);
-
-      est->status = True;
-    }
-  }
-
-  if (verificador) {
-    printf("\nA Vaga não foi alocada! Veículo não cadastrado no sistema! Digite > Enter < para voltar ao menu Estacionamento!");
-    free(clix);
-    free(est);
-    getchar();
-  }
-  
-
+  est->status = True;
 
 	printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
@@ -155,6 +124,9 @@ Estaciona* telaEstacionarVei(void) {
 	delay(1);
   return est;
 }
+
+
+
 
 char* telaRetirarVei(void) {
 	char* placa;
@@ -181,11 +153,11 @@ char* telaRetirarVei(void) {
 	printf("///                                                                       ///\n");
 
   /// Placa do Veículo
-  printf("///           Placa do Veículo a ser retirado: ");
+  printf("///        Placa do Veículo a ser retirado: ");
   scanf(" %[^\n]", placa);
   getchar();
 	while (!validarPlaca(placa)) {
-    printf("\nPlaca invalida! Digite novamente: ");
+    printf("\n///        Placa invalida! Digite novamente: ");
     scanf(" %[^\n]", placa);
     getchar();
   }
@@ -199,31 +171,54 @@ char* telaRetirarVei(void) {
 
 
 /////////////// --------  Estacionamento de Veículo  ------ //////////////////
-/*void cadastrarEst(void) {
-  Estaciona* est;
-
-	est = telaEstacionarVei();
-	gravarEst(est);
-	free(est);
-}
-
-
-
 void gravarEst(Estaciona* est) {
   FILE* fp;
   fp = fopen("estacionamento.dat", "ab");
   if (fp == NULL) {
     telaErro();
     printf("Não é possível continuar o programa...\n");
-  exit(1);
+    exit(1);
   }
   fwrite(est, sizeof(Estaciona), 1, fp);
   fclose(fp);
 } 
-//////////////////////////////////////////////////////////////////////////////
 
 
+int verificaCadastroCliente(char* placa) {
+  FILE* fp;
 
+  fp = fopen("cliente.dat", "rb");
+  if (fp == NULL) {
+    telaErro();
+    printf("Não é possível continuar o programa...\n");
+    exit(1);
+  }
+
+  Cliente* clix;
+  clix = (Cliente*) malloc(sizeof(Cliente));
+
+  while(fread(clix, sizeof(Cliente), 1, fp)) {
+    if ((strcmp(placa, clix->placa) == 0) && (clix->status == True)) {
+      return True;
+    }
+  }
+
+  printf("A vaga não foi alocada! Veículo não cadastrado no sistema!\n");
+  printf("Você será redirecionado para menu Cadastro do cliente!\n");
+  printf("Tecle >>>>ENTER<<<<\n");
+  getchar();
+
+  cadastrarVei();
+  fclose(fp);
+  free(clix);
+  return True;
+
+}
+
+/////////////////////////////////////////////////////////////////////////////
+
+
+/*
 /////////////// --------  Retirada de Veículo  ------ //////////////////
 void retirarVei(void) {
 	Estaciona* est;
