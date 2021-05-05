@@ -15,7 +15,7 @@
 #include "gerente.h"
 #include "estaciona.h"
 #include "relatorio.h" 
-#include "ultilidade.h"
+#include "utilidade.h"
 
 ////////////////////////////////
 //// Assinatura das funções ////
