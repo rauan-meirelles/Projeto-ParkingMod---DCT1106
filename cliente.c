@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "cliente.h"
-#include "ultilidade.h"
+#include "utilidade.h"
 
 typedef struct cliente Cliente;
 
