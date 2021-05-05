@@ -10,7 +10,7 @@
 #include "funcionario.h"
 #include "gerente.h"
 #include "relatorio.h"
-#include "ultilidade.h"
+#include "utilidade.h"
 
 
 void moduloRelatorio(void) {
