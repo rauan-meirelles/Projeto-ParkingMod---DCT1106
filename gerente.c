@@ -189,22 +189,23 @@ Gerente* telaCadastrarGerente(void) {
   ger = (Gerente*) malloc(sizeof(Gerente));
 
   /// Nome do Gerente
-  do{
-    printf("///           Nome completo: ");
+  printf("///           Nome completo: ");
+  scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", ger->nome);
+  getchar();
+  while (!validarNome(ger->nome)){
+    printf("Nome invalido, digite novamente: ");
     scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", ger->nome);
-    getchar();
-  } while (!validarNome(ger->nome));
-  /// Data de nascimento do Gerente
-  printf("///           Data de Nascimento (dd/mm/aaaa):  ");
-	scanf("%[0-9/]", ger->nasc);
-	getchar();
-  /// Cpf do Gerente
-	printf("///           Digite seu CPF: ");
+  }
+
+  /// Cpf do Gerente	 
+  printf("///           Digite seu CPF: ");
   scanf(" %[^\n]", ger->cpf);
-  while(!validarCPF(ger->cpf)){
+  getchar();
+  while(!validarCPF(ger->cpf)) {
     printf("CPF invalido, digite novamente: ");
     scanf(" %[^\n]", ger->cpf);
   }
+
   ger->status = True;
   printf("\nGerente cadastrado! Digite > Enter < para voltar ao menu Gerente!");
   getchar();
@@ -219,8 +220,8 @@ Gerente* telaCadastrarGerente(void) {
 void* telaPesquisarGerente(void) {
 	char* cpf;
 
-    cpf = (char*) malloc(12*sizeof(char));
-    limpaTela();
+  cpf = (char*) malloc(12*sizeof(char));
+  limpaTela();
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
@@ -253,7 +254,7 @@ void* telaAtualizarGerente(void) {
 	char* cpf;
 
 	cpf = (char*) malloc(12*sizeof(char));
-    limpaTela();
+  limpaTela();
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
@@ -355,7 +356,6 @@ void exibirGerente(Gerente* ger) {
 		printf("\n= = = Gerente Cadastrado = = =\n");
 		printf("Nome: %s\n", ger->nome);
 		printf("CPF: %s\n", ger->cpf);
-		printf("Data de Nasc: %s\n", ger->nasc);
 		printf("Status: %d\n", ger->status);
 	}
 	printf("\n\nTecle ENTER para continuar!\n\n");
@@ -377,7 +377,7 @@ void regravarGerente(Gerente* ger) {
 	achou = False;
 	while(fread(gerLido, sizeof(Gerente), 1, fp) && !achou) {
 		//fread(gerLido, sizeof(Gerente), 1, fp);
-		if (strcmp(gerLido->placa, ger->placa) == 0) {
+		if (strcmp(gerLido->cpf, ger->cpf) == 0) {
 			achou = True;
 			fseek(fp, -1*sizeof(Gerente), SEEK_CUR);
         	fwrite(ger, sizeof(Gerente), 1, fp);
