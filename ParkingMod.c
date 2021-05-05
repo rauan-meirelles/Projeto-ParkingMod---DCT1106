@@ -13,6 +13,8 @@
 #include "cliente.h"
 #include "funcionario.h"
 #include "gerente.h"
+#include "estaciona.h"
+#include "relatorio.h" 
 #include "ultilidade.h"
 
 ////////////////////////////////
@@ -37,11 +39,15 @@ int main(void) {
 		switch(opcao) {
 			case '1': 	moduloCliente();
 						break;
-			case '2': 	moduloFuncionario();
+			case '2': 	moduloEstaciona();
 						break;
-			case '3': 	moduloGerente();
+			case '3': 	moduloFuncionario();
 						break;
-			case '4': 	moduloInformacoes();
+			case '4': 	moduloGerente();
+						break;
+      case '5': 	moduloRelatorio();
+            break;
+			case '6': 	moduloInformacoes();
 						break;
 		} 
 	} while (opcao != '0');
@@ -70,9 +76,11 @@ char menuPrincipal(void) {
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
 	printf("///           1. Módulo Cliente                                           ///\n");
-	printf("///           2. Módulo Funcionário                                       ///\n");
-	printf("///           3. Módulo Gerente                                           ///\n");
-  printf("///           4. Módulo Informações                                       ///\n");
+  printf("///           2. Módulo Estacionamento                                    ///\n");
+	printf("///           3. Módulo Funcionário                                       ///\n");
+	printf("///           4. Módulo Gerente                                           ///\n");
+  printf("///           5. Módulo Relatório                                         ///\n");
+  printf("///           6. Módulo Informações                                       ///\n");
   printf("///           0. Encerrar programa                                        ///\n");
   printf("///           Escolha a opção desejada: ");
   scanf("%c", &op);
@@ -122,10 +130,6 @@ void telaSobre(void) {
 	getchar();
 }
 
-void moduloRelatorio(void) {
-	// modulo em desenvolvimento
-
-}
 
 
 void moduloInformacoes(void) {
