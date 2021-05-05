@@ -187,27 +187,36 @@ Funcionario* telaCadastrarFuncionario(void) {
   printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
   printf("///                                                                       ///\n");
   printf("///                                                                       ///\n");
+
   funci = (Funcionario*) malloc(sizeof(Funcionario));
+
   /// Nome do Funcionário
-  do {
   printf("///           Nome completo: ");
-	scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", funci->nome);
-	getchar();
-  } while (!validarNome(funci->nome));
-  
+  scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", funci->nome);
+  getchar();
+  while (!validarNome(funci->nome)){
+    printf("Nome invalido, digite novamente: ");
+    scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", funci->nome);
+  }
+
   /// Data de nascimento do Funcionário
   printf("///           Data de Nascimento (dd/mm/aaaa):  ");
-	scanf("%[0-9/]", funci->nasc);
-	getchar();
+  scanf("%d/%d/%d", &funci->dia, &funci->mes, &funci->ano);
+  getchar();
+  while (!ehData(funci->dia, funci->mes, funci->ano)){
+    printf("\nData invalida! Digite novamente (dd/mm/aaaa): ");
+    scanf("%d/%d/%d",&funci->dia, &funci->mes, &funci->ano);
+  }
 
-  /// Cpf do Funcionário
-	printf("\nDigite seu CPF: ");
+  /// Cpf do Funcionário	 
+  printf("///           Digite seu CPF: ");
   scanf(" %[^\n]", funci->cpf);
-  while(!validarCPF(funci->cpf)){
+  getchar();
+  while(!validarCPF(funci->cpf)) {
     printf("CPF invalido, digite novamente: ");
     scanf(" %[^\n]", funci->cpf);
   }
-  
+	
   funci->status = True;
   printf("\nFuncionário cadastrado! Digite > Enter < para voltar ao menu Funcionário!");
   getchar();
@@ -222,8 +231,8 @@ Funcionario* telaCadastrarFuncionario(void) {
 void* telaPesquisarFuncionario(void) {
 	char* cpf;
 
-    cpf = (char*) malloc(12*sizeof(char));
-    limpaTela();
+  cpf = (char*) malloc(12*sizeof(char));
+  limpaTela();
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
@@ -256,7 +265,7 @@ void* telaAtualizarFuncionario(void) {
 	char* cpf;
 
 	cpf = (char*) malloc(12*sizeof(char));
-    limpaTela();
+  limpaTela();
 	printf("\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
@@ -359,7 +368,7 @@ void exibirFuncionario(Funcionario* funci) {
 		printf("\n= = = Funcionário Cadastrado = = =\n");
 		printf("Nome: %s\n", funci->nome);
 		printf("CPF: %s\n", funci->cpf);
-		printf("Data de Nasc: %s\n", funci->nasc);
+		printf("Data de Nasc: %d/%d/%d\n", funci->dia,funci->mes,funci->ano);
 		printf("Status: %d\n", funci->status);
 	}
 	printf("\n\nTecle ENTER para continuar!\n\n");
@@ -381,7 +390,7 @@ void regravarFuncionario(Funcionario* funci) {
 	achou = False;
 	while(fread(funciLido, sizeof(Funcionario), 1, fp) && !achou) {
 		//fread(funciLido, sizeof(Funcionario), 1, fp);
-		if (strcmp(funciLido->placa, funci->placa) == 0) {
+		if (strcmp(funciLido->cpf, funci->cpf) == 0) {
 			achou = True;
 			fseek(fp, -1*sizeof(Funcionario), SEEK_CUR);
         	fwrite(funci, sizeof(Funcionario), 1, fp);
