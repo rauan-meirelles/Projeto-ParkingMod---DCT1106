@@ -12,12 +12,6 @@ struct estaciona {
   int status;
 }; 
 
-///Entrada:
-///ler placa
-///ler data
-///status = 1;
-///gravar
-
 ///Saida:
 ///ler placa
 ///status = 0;
@@ -28,6 +22,7 @@ char menuEstaciona(void);
 
 Estaciona* telaEstacionarVei(void);
 void cadastrarEst(void);
+int verificaCadastroCliente(char*);
 void gravarEst(Estaciona*);
 
 char* telaRetirarVei(void);
@@ -35,6 +30,8 @@ void retirarVei(void);
 Estaciona* buscarEst(char*);
 
 void telaErro(void);
+
+
 
 
 
