@@ -7,7 +7,7 @@
 #include <string.h>
 #include "cliente.h"
 #include "estaciona.h"
-#include "ultilidade.h"
+#include "utilidade.h"
 
 typedef struct estaciona Estaciona;
 
