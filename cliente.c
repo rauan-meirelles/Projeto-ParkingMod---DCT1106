@@ -43,9 +43,17 @@ void pesquisarVei(void) {
 
 	matr = telaPesquisarVei();
 	cli = buscarVei(matr);
+  if (cli == NULL) {
+    printf("Essa mátricula não está cadastrada no sistema!\n");
+    printf("Você será redirecionado para a tela de Cadastro!\n");
+    printf("Tecle >>>>ENTER<<<<\n");
+    getchar();
+    telaCadastroVei();
+  } else {
 	exibirVei(cli);
 	free(cli); 
 	free(matr);
+  }
 }
 
 /// Atualização de Veículo
@@ -61,9 +69,6 @@ void atualizarVei(void) {
 		  cli = telaCadastroVei();
 		  strcpy(cli->matr, matr);
 		  regravarVei(cli);
-		  // Outra opção:
-		  // excluirVei(matr);
-		  // gravarVei(cli);
 		  free(cli);
 	}
 	free(matr);
@@ -415,15 +420,12 @@ void regravarVei(Cliente* cli) {
 	if (fp == NULL) {
 		telaErroCliente();
 	}
-	// while(!feof(fp)) {
 	achou = False;
 	while(fread(cliLido, sizeof(Cliente), 1, fp) && !achou) {
-		//fread(cliLido, sizeof(Cliente), 1, fp);
 		if (strcmp(cliLido->matr, cli->matr) == 0) {
 			achou = True;
 			fseek(fp, -1*sizeof(Cliente), SEEK_CUR);
         	fwrite(cli, sizeof(Cliente), 1, fp);
-			//break;
 		}
 	}
 	fclose(fp);
