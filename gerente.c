@@ -193,7 +193,7 @@ Gerente* telaCadastrarGerente(void) {
   scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", ger->nome);
   getchar();
   while (!validarNome(ger->nome)){
-    printf("Nome invalido, digite novamente: ");
+    printf("///           Nome invalido, digite novamente: ");
     scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", ger->nome);
   }
 
@@ -202,7 +202,7 @@ Gerente* telaCadastrarGerente(void) {
   scanf(" %[^\n]", ger->cpf);
   getchar();
   while(!validarCPF(ger->cpf)) {
-    printf("CPF invalido, digite novamente: ");
+    printf("///           CPF invalido, digite novamente: ");
     scanf(" %[^\n]", ger->cpf);
   }
 
