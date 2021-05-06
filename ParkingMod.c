@@ -75,24 +75,24 @@ char menuPrincipal(void) {
 	printf("///           = (o ! o) = = =  Menu Principal = = = (o ! o) =             ///\n");
 	printf("///           = = = = = = = = = = = = = = = = = = = = = = = =             ///\n");
 	printf("///                                                                       ///\n");
-	printf("///        1. Módulo Cliente                                              ///\n");
-  printf("///        2. Módulo Estacionamento (Apenas para Clientes cadastrados!)   ///\n");
-	printf("///        3. Módulo Funcionário                                          ///\n");
-	printf("///        4. Módulo Gerente                                              ///\n");
-  printf("///        5. Módulo Relatório                                            ///\n");
-  printf("///        6. Módulo Informações                                          ///\n");
+	printf("///     1. Módulo Cliente                                                 ///\n");
+  printf("///     2. Módulo Estacionamento (Apenas para Clientes cadastrados!)      ///\n");
+	printf("///     3. Módulo Funcionário                                             ///\n");
+	printf("///     4. Módulo Gerente                                                 ///\n");
+  printf("///     5. Módulo Relatório                                               ///\n");
+  printf("///     6. Módulo Informações                                             ///\n");
   printf("///                                                                       ///\n");
-  printf("///        0. Encerrar programa                                           ///\n");
-  printf("///        Escolha a opção desejada: ");
+  printf("///     0. Encerrar programa                                              ///\n");
+  printf("///     Escolha a opção desejada: ");
   scanf("%c", &op);
   printf("///                                                                       ///\n");
   printf("///                                                                       ///\n");
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
-    printf("\n");
-    delay(1);
+  printf("\n");
+  delay(1);
 	getchar();
-    return op;
+  return op;
 }
 
 
@@ -110,6 +110,7 @@ void telaSobre(void) {
  	printf("///              = == ==       PARKINGMOD        = == ==                  ///\n");
 	printf("///              Developed by  @rauan-meirelles - Jan, 2021               ///\n");
 	printf("///              (o ! o)          (o ! o)        (o ! o)                  ///\n");
+  printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
 	printf("///                                                                       ///\n");
 	printf("///   == == ParkingMod: Um Sistema de Controle de Estacionamentos == ==   ///\n");
