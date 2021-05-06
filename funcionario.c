@@ -196,7 +196,7 @@ Funcionario* telaCadastrarFuncionario(void) {
   scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", funci->nome);
   getchar();
   while (!validarNome(funci->nome)){
-    printf("Nome invalido, digite novamente: ");
+    printf("///           Nome invalido, digite novamente: ");
     scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", funci->nome);
   }
 
@@ -205,7 +205,7 @@ Funcionario* telaCadastrarFuncionario(void) {
   scanf("%d/%d/%d", &funci->dia, &funci->mes, &funci->ano);
   getchar();
   while (!ehData(funci->dia, funci->mes, funci->ano)){
-    printf("\nData invalida! Digite novamente (dd/mm/aaaa): ");
+    printf("///           Data invalida! Digite novamente (dd/mm/aaaa): ");
     scanf("%d/%d/%d",&funci->dia, &funci->mes, &funci->ano);
   }
 
@@ -214,13 +214,12 @@ Funcionario* telaCadastrarFuncionario(void) {
   scanf(" %[^\n]", funci->cpf);
   getchar();
   while(!validarCPF(funci->cpf)) {
-    printf("CPF invalido, digite novamente: ");
+    printf("///           CPF invalido, digite novamente: ");
     scanf(" %[^\n]", funci->cpf);
   }
 	
   funci->status = True;
   printf("\nFuncionário cadastrado! Digite > Enter < para voltar ao menu Funcionário!");
-  getchar();
   getchar();
 	printf("///                                                                       ///\n");
 	printf("/////////////////////////////////////////////////////////////////////////////\n");
