@@ -46,7 +46,11 @@ void pesquisarFuncionario(void) {
 	cpf = telaPesquisarFuncionario();
 	funci = buscarFuncionario(cpf);
     if (funci == NULL) {
-    	printf("\n\nFuncionário não encontrado!\n\n");
+      printf("Esse Funcionário não está cadastrada no sistema!\n");
+      printf("Você será redirecionado para a tela de Cadastro!\n");
+      printf("Tecle >>>>ENTER<<<<\n");
+      getchar();
+      telaCadastrarFuncionario();
 	}
 	exibirFuncionario(funci);
 	free(funci); 
@@ -67,9 +71,6 @@ void atualizarFuncionario(void) {
 		  funci = telaCadastrarFuncionario();
 		  strcpy(funci->cpf, cpf);
 		  regravarFuncionario(funci);
-		  // Outra opção:
-		  // excluirFuncionario(cpf);
-		  // gravarFuncionario(funci);
 		  free(funci);
 	}
 	free(cpf);	
