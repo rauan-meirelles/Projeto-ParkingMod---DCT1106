@@ -2,10 +2,13 @@
 ////         Módulo Relatório       ////
 ////////////////////////////////////////
 
-
 void moduloRelatorio(void);
 char menuRelatorio(void);
 
-void relatorioCliente(Cliente*);
-///void relatorioFuncionario(Cliente*);
-///void relatorioGerente(Cliente*);
+void veiPorDia(void);
+
+char* telaVeiPorDia(void);
+
+void relatVeiPorDia(char*);
+
+void listaVeiPorDia(char*);
