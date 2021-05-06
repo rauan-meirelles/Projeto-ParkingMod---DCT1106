@@ -23,7 +23,9 @@ void moduloEstaciona(void) {
 			case '1': 	est = telaEstacionarVei();
                   clienteOk = verificaCadastroCliente(est->placa);
                   if (clienteOk) {
-                    printf("Vaga alocada! Pressione >>>ENTER<<< para voltar ao Menu Estacionamento");
+                    printf("Vaga alocada! Pressione >>>ENTER<<< para voltar ao Menu Estacionamento\n");
+                    printf("Data do estacionamento: %d/%d/%d\n", est->dia,est->mes,est->ano);
+                    printf("Placa do Veículo: %s\n", est->placa);      
                     getchar();
                     gravarEst(est);
                   }
