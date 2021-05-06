@@ -2,13 +2,30 @@
 ////         Módulo Relatório       ////
 ////////////////////////////////////////
 
+typedef struct relatorio Relatorio;
+
+struct relatorio {
+  int dia;
+  int mes;
+  int ano;
+  int status;
+}; 
+
 void moduloRelatorio(void);
 char menuRelatorio(void);
 
-void veiPorDia(void);
+void veiPorData(void);
+void totalVeiEstacionado(void);
+void totalFunciCadastrados(void);
+void totalGerCadastrados(void);
 
-char* telaVeiPorDia(void);
+Relatorio* telaVeiPorData(void);
 
-void relatVeiPorDia(char*);
+void relatVeiPorData(Relatorio*);
 
-void listaVeiPorDia(char*);
+void listaVeiPorData(Relatorio*);
+void listaVeiTotal(void);
+void listaFunciTotal(void);
+void listaGerTotal(void);
+
+void telaErroRelatório(void);
