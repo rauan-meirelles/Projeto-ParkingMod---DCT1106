@@ -46,7 +46,10 @@ void pesquisarGerente(void) {
 	cpf = telaPesquisarGerente();
 	ger = buscarGerente(cpf);
     if (ger == NULL) {
-    	printf("\n\nGerente não encontrado!\n\n");
+    	printf("Esse Gerente não está cadastrada no sistema!\n");
+      printf("Você será redirecionado para a tela de Cadastro!\n");
+      printf("Tecle >>>>ENTER<<<<\n");
+      getchar();
 	}
 	exibirGerente(ger);
 	free(ger); 
@@ -66,9 +69,6 @@ void atualizarGerente(void) {
 		  ger = telaCadastrarGerente();
 		  strcpy(ger->cpf, cpf);
 		  regravarGerente(ger);
-		  // Outra opção:
-		  // excluirGerente(cpf);
-		  // gravarGerente(ger);
 		  free(ger);
 	}
 	free(cpf);	
