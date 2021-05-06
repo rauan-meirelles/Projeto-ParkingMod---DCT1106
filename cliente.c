@@ -87,6 +87,8 @@ void excluirVei(void) {
   	} else {
 		  cli->status = False;
 		  regravarVei(cli);
+      printf("Cadastro removido com sucesso!\n");
+      printf("Tecle >>>Enter<<< para voltar ao Menu Principal\n");
 		  free(cli);
 	}
 	free(matr);
@@ -195,7 +197,7 @@ Cliente* telaCadastroVei(void) {
   scanf("%[^\n]", cli->matr);
   getchar();
 	while (!validarMatr(cli->matr)){
-    printf("\nMatrícula invalida! Digite novamente: ");
+    printf("///           Matrícula invalida! Digite novamente: ");
     scanf("%[^\n]", cli->matr);
   }
 
@@ -204,7 +206,7 @@ Cliente* telaCadastroVei(void) {
   scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", cli->nome);
   getchar();
   while (!validarNome(cli->nome)){
-    printf("Nome invalido, digite novamente: ");
+    printf("///           Nome invalido, digite novamente: ");
     scanf("%[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ a-záéíóúâêôçàãõ]", cli->nome);
   }
 
@@ -213,7 +215,7 @@ Cliente* telaCadastroVei(void) {
   scanf(" %[^\n]", cli->cpf);
   getchar();
   while(!validarCPF(cli->cpf)) {
-    printf("CPF invalido, digite novamente: ");
+    printf("///           CPF invalido, digite novamente: ");
     scanf(" %[^\n]", cli->cpf);
   }
 	
@@ -222,7 +224,7 @@ Cliente* telaCadastroVei(void) {
   scanf("%d/%d/%d", &cli->dia, &cli->mes, &cli->ano);
   getchar();
   while (!ehData(cli->dia, cli->mes, cli->ano)){
-    printf("\nData invalida! Digite novamente (dd/mm/aaaa): ");
+    printf("///           Data invalida! Digite novamente (dd/mm/aaaa): ");
     scanf("%d/%d/%d",&cli->dia, &cli->mes, &cli->ano);
   }
 
@@ -231,7 +233,7 @@ Cliente* telaCadastroVei(void) {
   scanf(" %[^\n]", cli->placa);
   getchar();
 	while (!validarPlaca(cli->placa)) {
-    printf("\nPlaca invalida! Digite novamente: ");
+    printf("///           Placa invalida! Digite novamente: ");
     scanf(" %[^\n]", cli->placa);
   }
 
@@ -240,7 +242,7 @@ Cliente* telaCadastroVei(void) {
   scanf("%[^\n]", cli->celular);
   getchar();
   while (!validarFone(cli->celular)) {
-    printf("\nCelular invalido! Digite novamente: ");
+    printf("///           Celular invalido! Digite novamente: ");
     scanf(" %[^\n]", cli->celular);
   }
 
