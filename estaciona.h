@@ -12,11 +12,6 @@ struct estaciona {
   int status;
 }; 
 
-///Saida:
-///ler placa
-///status = 0;
-///regravar (editar)
-
 void moduloEstaciona(void);
 char menuEstaciona(void);
 
@@ -25,25 +20,10 @@ void cadastrarEst(void);
 int verificaCadastroCliente(char*);
 void gravarEst(Estaciona*);
 
-char* telaRetirarVei(void);
+Estaciona* telaRetirarVei(void);
 void retirarVei(void);
-Estaciona* buscarEst(char*);
+int verificaCadEstacionamento(char*);
+void excluirEst(Estaciona*);
 
 void telaErro(void);
-
-
-
-
-
-// char* telaPesquisarEst(void);
-// char* telaAtualizarVei(void);
-// void telaErroEstaciona(void);
-// void cadastrarEst(void);
-// void pesquisarVei(void);
-// void atualizarVei(void);
-// void retirarEst(void);
-
-// void exibirVei(Cliente*);
-
-// void exibirEst(Cliente*);
 
